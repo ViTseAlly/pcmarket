@@ -1,0 +1,10 @@
+01;Motherboard;Gaming Motherboard;150;15;"Socket: LGA1200";"Chipset: Z490";"RAM Slots: 4";"USB Ports: 6";"PCIe Slots: 3";
+02;Motherboard;Office Motherboard;80;20;"Socket: AM4";"Chipset: B450";"RAM Slots: 2";"USB Ports: 4";"PCIe Slots: 1";
+03;Motherboard;Media Center Motherboard;120;12;"Socket: LGA1151";"Chipset: H370";"RAM Slots: 6";"USB Ports: 8";"PCIe Slots: 2";
+04;Motherboard;Server Motherboard;200;8;"Socket: SP3";"Chipset: X399";"RAM Slots: 8";"USB Ports: 10";"PCIe Slots: 4";
+05;Motherboard;Mini-ITX Motherboard;100;18;"Socket: AM4";"Chipset: A320";"RAM Slots: 2";"USB Ports: 6";"PCIe Slots: 1";
+06;Motherboard;ATX Motherboard;130;14;"Socket: LGA1200";"Chipset: Z590";"RAM Slots: 4";"USB Ports: 8";"PCIe Slots: 3";
+07;Motherboard;Micro-ATX Motherboard;110;16;"Socket: AM4";"Chipset: B550";"RAM Slots: 3";"USB Ports: 6";"PCIe Slots: 2";
+08;Motherboard;Workstation Motherboard;180;10;"Socket: LGA2066";"Chipset: X299";"RAM Slots: 8";"USB Ports: 12";"PCIe Slots: 4";
+09;Motherboard;Budget Motherboard;70;25;"Socket: AM4";"Chipset: A520";"RAM Slots: 2";"USB Ports: 4";"PCIe Slots: 1";
+10;Motherboard;High-End Motherboard;250;9;"Socket: LGA1200";"Chipset: Z690";"RAM Slots: 4";"USB Ports: 10";"PCIe Slots: 4";

@@ -1,0 +1,79 @@
+[
+  {
+    "Name": "Vitalliy",
+    "Surname": "Tsenyov",
+    "Email": "vitalliytsenyov@gmail.com",
+    "Password": "qwerty123",
+    "Role": true
+  },
+  {
+    "Name": "Elena",
+    "Surname": "Ivanova",
+    "Email": "elena.ivanova@email.com",
+    "Password": "strongPassword",
+    "Role": false
+  },
+  {
+    "Name": "Alex",
+    "Surname": "Petrov",
+    "Email": "alex.petrov@example.com",
+    "Password": "securePass123",
+    "Role": false
+  },
+  {
+    "Name": "Olga",
+    "Surname": "Kuznetsova",
+    "Email": "olga.kuznetsova@mail.ru",
+    "Password": "mySecret123",
+    "Role": false
+  },
+  {
+    "Name": "Dmitriy",
+    "Surname": "Sokolov",
+    "Email": "dmitriy.sokolov@gmail.com",
+    "Password": "pass1234",
+    "Role": false
+  },
+  {
+    "Name": "Anna",
+    "Surname": "Popova",
+    "Email": "anna.popova@example.org",
+    "Password": "password123",
+    "Role": false
+  },
+  {
+    "Name": "Sergey",
+    "Surname": "Mikhailov",
+    "Email": "sergey.mikhailov@mail.com",
+    "Password": "securePass",
+    "Role": false
+  },
+  {
+    "Name": "Natalia",
+    "Surname": "Kovalenko",
+    "Email": "natalia.kovalenko@example.com",
+    "Password": "password@123",
+    "Role": false
+  },
+  {
+    "Name": "Igor",
+    "Surname": "Novikov",
+    "Email": "igor.novikov@gmail.com",
+    "Password": "qwerty987",
+    "Role": false
+  },
+  {
+    "Name": "Yulia",
+    "Surname": "Konovalova",
+    "Email": "yulia.konovalova@email.net",
+    "Password": "mySecurePass",
+    "Role": false
+  },
+  {
+    "Name": "vitalliy",
+    "Surname": "tsenyov",
+    "Email": "vitalliytsenyov@gmail.com",
+    "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6InF3ZXJ0eTEyMyIsImV4cCI6MTcwNTIzOTMyNH0.Pvp7VgKGh_f4Qy0BOJLL_eOlwuxjk6mH8Gg_dleD-CA",
+    "Role": false
+  }
+]

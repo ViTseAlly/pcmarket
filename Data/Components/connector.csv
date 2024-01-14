@@ -1,0 +1,10 @@
+01;Connector;USB 3.0 Cable;10;50;"Type: A to B";"Length: 1 meter";"Color: Blue";"Transfer Rate: 5 Gbps";"Connector Type: Gold-plated";
+02;Connector;HDMI Cable;15;40;"Type: Standard HDMI";"Length: 2 meters";"Color: Black";"Version: 2.0";"Connector Type: Nickel-plated";
+03;Connector;VGA Cable;8;60;"Type: VGA to VGA";"Length: 1.5 meters";"Color: White";"Resolution: 1080p";"Connector Type: Silver-plated";
+04;Connector;Ethernet Cable;12;35;"Type: Cat 6";"Length: 3 meters";"Color: Gray";"Speed: 1 Gbps";"Connector Type: Gold-plated";
+05;Connector;DisplayPort Cable;18;25;"Type: DisplayPort to DisplayPort";"Length: 2 meters";"Color: Black";"Version: 1.4";"Connector Type: Gold-plated";
+06;Connector;Audio Jack Cable;6;70;"Type: 3.5mm Stereo";"Length: 1.2 meters";"Color: Red";"Connector Type: Nickel-plated";"Compatibility: Universal";
+07;Connector;SATA Cable;9;55;"Type: SATA III";"Length: 0.5 meters";"Color: Yellow";"Speed: 6 Gbps";"Connector Type: Locking Latch";
+08;Connector;DVI Cable;14;30;"Type: DVI-D";"Length: 1.8 meters";"Color: White";"Resolution: 1440p";"Connector Type: Gold-plated";
+09;Connector;Thunderbolt Cable;20;20;"Type: Thunderbolt 3";"Length: 0.8 meters";"Color: Silver";"Speed: 40 Gbps";"Connector Type: Gold-plated";
+10;Connector;Power Cable;7;80;"Type: IEC C13";"Length: 1.5 meters";"Color: Black";"Current Rating: 10A";"Connector Type: Molded";

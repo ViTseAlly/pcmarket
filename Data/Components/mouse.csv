@@ -1,0 +1,10 @@
+01;Mouse;Gaming Mouse;50;30;"Type: Wired";"DPI: 10000";"Buttons: 8";"Color: RGB";"Grip Type: Palm";
+02;Mouse;Wireless Mouse;40;25;"Type: Wireless";"DPI: 800";"Buttons: 5";"Color: Black";"Grip Type: Claw";
+03;Mouse;Ergonomic Mouse;60;20;"Type: Wired";"DPI: 1200";"Buttons: 6";"Color: Blue";"Grip Type: Ergonomic";
+04;Mouse;Ambidextrous Mouse;35;35;"Type: Wired";"DPI: 1600";"Buttons: 7";"Color: Red";"Grip Type: Ambidextrous";
+05;Mouse;Programmable Mouse;55;28;"Type: Wired";"DPI: 2000";"Buttons: 10";"Color: RGB";"Grip Type: Palm";
+06;Mouse;Travel Mouse;30;40;"Type: Wired";"DPI: 800";"Buttons: 3";"Color: Silver";"Grip Type: Compact";
+07;Mouse;Vertical Mouse;45;22;"Type: Wired";"DPI: 1200";"Buttons: 5";"Color: Black";"Grip Type: Vertical";
+08;Mouse;Trackball Mouse;70;15;"Type: Wired";"DPI: 1500";"Buttons: 4";"Color: Gray";"Grip Type: Trackball";
+09;Mouse;Silent Click Mouse;25;50;"Type: Wired";"DPI: 1000";"Buttons: 2";"Color: White";"Grip Type: Silent Click";
+10;Mouse;Gaming Mousepad;15;60;"Type: Mousepad";"Size: Large";"Color: Black";"Material: Cloth";"Surface: Smooth";

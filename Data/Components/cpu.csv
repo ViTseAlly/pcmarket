@@ -1,0 +1,10 @@
+01;CPU;Intel Core i9-9900K;400;10;"Socket: LGA1151";"Cores: 8";"Threads: 16";"Base Clock: 3.6 GHz";"Boost Clock: 5.0 GHz";
+02;CPU;AMD Ryzen 7 3700X;300;15;"Socket: AM4";"Cores: 8";"Threads: 16";"Base Clock: 3.6 GHz";"Boost Clock: 4.4 GHz";
+03;CPU;Intel Core i5-10600K;250;20;"Socket: LGA1200";"Cores: 6";"Threads: 12";"Base Clock: 4.1 GHz";"Boost Clock: 4.8 GHz";
+04;CPU;AMD Ryzen 5 3600;200;25;"Socket: AM4";"Cores: 6";"Threads: 12";"Base Clock: 3.6 GHz";"Boost Clock: 4.2 GHz";
+05;CPU;Intel Core i7-10700K;350;12;"Socket: LGA1200";"Cores: 8";"Threads: 16";"Base Clock: 3.8 GHz";"Boost Clock: 5.1 GHz";
+06;CPU;AMD Ryzen 9 5900X;500;8;"Socket: AM4";"Cores: 12";"Threads: 24";"Base Clock: 3.7 GHz";"Boost Clock: 4.8 GHz";
+07;CPU;Intel Core i3-10100;150;30;"Socket: LGA1200";"Cores: 4";"Threads: 8";"Base Clock: 3.6 GHz";"Boost Clock: 4.3 GHz";
+08;CPU;AMD Ryzen 3 3300X;120;35;"Socket: AM4";"Cores: 4";"Threads: 8";"Base Clock: 3.8 GHz";"Boost Clock: 4.3 GHz";
+09;CPU;Intel Pentium G5400;80;40;"Socket: LGA1151";"Cores: 2";"Threads: 4";"Base Clock: 3.7 GHz";"Boost Clock: N/A";
+10;CPU;AMD Athlon 3000G;60;45;"Socket: AM4";"Cores: 2";"Threads: 4";"Base Clock: 3.5 GHz";"Boost Clock: N/A";

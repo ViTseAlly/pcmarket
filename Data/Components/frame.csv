@@ -1,0 +1,10 @@
+01;Frame;Steel Frame;50;20;"Material: Steel";"Color: Black";"Size: ATX";"Weight: 2 kg";
+02;Frame;Aluminum Frame;60;15;"Material: Aluminum";"Color: Silver";"Size: Micro-ATX";"Weight: 1.5 kg";
+03;Frame;Carbon Fiber Frame;80;10;"Material: Carbon Fiber";"Color: Carbon";"Size: Mini-ITX";"Weight: 1 kg";
+04;Frame;Plastic Frame;30;25;"Material: Plastic";"Color: White";"Size: ATX";"Weight: 1.8 kg";
+05;Frame;Glass Frame;70;18;"Material: Glass";"Color: Transparent";"Size: E-ATX";"Weight: 3 kg";
+06;Frame;Wooden Frame;45;22;"Material: Wood";"Color: Brown";"Size: Micro-ATX";"Weight: 2.2 kg";
+07;Frame;RGB Frame;55;17;"Material: Plastic";"Color: RGB";"Size: ATX";"Weight: 2.5 kg";
+08;Frame;Compact Frame;40;30;"Material: Aluminum";"Color: Black";"Size: Mini-ITX";"Weight: 1.2 kg";
+09;Frame;Industrial Frame;65;12;"Material: Steel";"Color: Gray";"Size: ATX";"Weight: 2.8 kg";
+10;Frame;Modular Frame;75;14;"Material: Aluminum";"Color: Silver";"Size: E-ATX";"Weight: 3.5 kg";
