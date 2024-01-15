@@ -1,22 +1,26 @@
-﻿using App.UI;
+﻿using System.Globalization;
+using App.UI;
 using App.Toolkit;
 using App.User;
+using App.Structs;
+
 
 
 namespace Project
 {
     class Program
     {
+        private static Toolkits toolkits = new Toolkits();                                       //    Створення допоміжного о'бєкту у якому містяться основні функції проекту
+        private static Interfaces interfaces = new Interfaces();                                 //    Створення об'єкту що відповідальний за відображенння "сторінок" у консолі
+        private static Menus menuInterfaces = new Menus();
+        private static UserStruct user = new UserStruct();
+
         public static void Main(string[] args)
         {                                                                             // Оголошення власних об'єктів:
-            Toolkits toolkits = new Toolkits();                                       //    Створення допоміжного о'бєкту у якому містяться основні функції проекту
-            Interfaces interfaces = new Interfaces();                                 //    Створення об'єкту що відповідальний за відображенння "сторінок" у консолі
-            User user;                                                                //    Створення користувача
-
             bool programStart = true;
             bool isUserLogged = false;
 
-            interfaces.Start();                                                       // Початок роботи програми: Запуск основного меню
+            menuInterfaces.Start();                                                       // Початок роботи програми: Запуск основного меню
 
             while (!isUserLogged && programStart)                                     // Цикл який буде діяти поки користувач не увійде у акаунт або не вийде з програми
             {
@@ -24,12 +28,12 @@ namespace Project
                 switch (userInput)
                 {
                     case 1:
-                        user = new User(interfaces.Login());                          // Визов вікна входу у акаунт
+                        user = interfaces.Login();                               // Визов вікна входу у акаунт
                         isUserLogged = true;                                          // Зміна прапору на true (перевірка у циклі)
                         break;
                     case 2:
                         interfaces.CreateAccount();                                   // Вікно створення акаунту
-                        interfaces.Start();                                           // Після успішного створення користувача поверне на головний екран
+                        menuInterfaces.Start();                                           // Після успішного створення користувача поверне на головний екран
                         break;
                     case 3:
                         programStart = false;                                         // Зміна прапору на false (перевірка у циклі)
@@ -40,8 +44,42 @@ namespace Project
 
             while (isUserLogged && programStart)                                      // Цикл для запуску основного функціоналу програми після того як користувач увійде у акаунт
             {
-                interfaces.Menu();                                                    // Запуск вікга головного меню
+                menuInterfaces.Menu(user);                                            // Запуск вікна головного меню
                 byte userInput = toolkits.CheckUserInput();
+                if(user.Role)
+                {
+                    switch(userInput)
+                    {
+                        case 1:
+                            interfaces.CheckAccount();
+                            break;
+                        case 4:
+                            interfaces.About();
+                            menuInterfaces.Menu(user);
+                            break;
+                        case 7:
+                            programStart = false;
+                            interfaces.Exit();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch(userInput)
+                    {
+                        case 1:
+                            interfaces.CheckAccount();
+                            break;
+                        case 4:
+                            interfaces.About();
+                            menuInterfaces.Menu(user);
+                            break;
+                        case 5:
+                            programStart = false;
+                            interfaces.Exit();
+                            break;
+                    }
+                }
             }
         }
     }

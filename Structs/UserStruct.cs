@@ -5,14 +5,14 @@ namespace App.Structs
 {
     public struct UserStruct
     {
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        public string Email { get; private set; }
-        public string Password { get; private set; }
-        public bool Role { get; private set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public bool Role { get; set; }
 
         [JsonConstructor]
-        public UserStruct(string name, string surname, string email, string password, bool role)
+        public UserStruct(string name, string surname, string email, string password, bool role = false)
         {
             Name = name;
             Surname = surname;

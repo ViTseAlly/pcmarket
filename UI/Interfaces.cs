@@ -9,29 +9,13 @@ namespace App.UI
     {
         private bool validationData = false;
         private bool findUser = false;
-        private string name;
-        private string surname;
-        private string email;
-        private string password;
-        private bool isAdmin;
         private UserStruct userData;
+        private UserStruct tempUserData;
         Toolkits toolkits = new Toolkits();
         Tokens tokens = new Tokens();
         Fonts fonts = new Fonts();
+        Menus menuInterfaces = new Menus();
 
-        public void Start()
-        {
-            Console.Clear();
-            Console.WriteLine("       ________  ________  _____ ______   ________  ________  ___  __    _______  _________   \r\n      |\\   __  \\|\\   ____\\|\\   _ \\  _   \\|\\   __  \\|\\   __  \\|\\  \\|\\  \\ |\\  ___ \\|\\___   ___\\ \r\n      \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\\\\\__\\ \\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\/  /|\\ \\   __/\\|___ \\  \\_| \r\n       \\ \\   ____\\ \\  \\    \\ \\  \\\\|__| \\  \\ \\   __  \\ \\   _  _\\ \\   ___  \\ \\  \\_|/__  \\ \\  \\  \r\n        \\ \\  \\___|\\ \\  \\____\\ \\  \\    \\ \\  \\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\\\ \\  \\ \\  \\_|\\ \\  \\ \\  \\ \r\n         \\ \\__\\    \\ \\_______\\ \\__\\    \\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\__\\\\ \\__\\ \\_______\\  \\ \\__\\\r\n          \\|__|     \\|_______|\\|__|     \\|__|\\|__|\\|__|\\|__|\\|__|\\|__| \\|__|\\|_______|   \\|__|");
-            Console.WriteLine("\n\t\t    W E L C O M E   I N T O   O U R   P - C   M A R K E T");
-            fonts.RedText("Y O U`R E   N O T   L O G I N");
-            List<string> list = [
-                                    "Login",
-                                    "Create account",
-                                    "Exit"
-                                ];
-            toolkits.DisplayMenuList(list);
-        }
 
         public UserStruct Login()
         {
@@ -41,28 +25,28 @@ namespace App.UI
                 Console.WriteLine("       ___       ________  ________  ___  ________      \r\n      |\\  \\     |\\   __  \\|\\   ____\\|\\  \\|\\   ___  \\    \r\n      \\ \\  \\    \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\ \\  \\\\ \\  \\   \r\n       \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\  __\\ \\  \\ \\  \\\\ \\  \\  \r\n        \\ \\  \\____\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\ \\  \\\\ \\  \\ \r\n         \\ \\_______\\ \\_______\\ \\_______\\ \\__\\ \\__\\\\ \\__\\\r\n          \\|_______|\\|_______|\\|_______|\\|__|\\|__| \\|__|");
 
                 Console.Write("\n\t\t    Username:");
-                this.name = Console.ReadLine();
+                this.tempUserData.Name = Console.ReadLine() ?? "";
                 Console.Write("\n\t\t    Surname:");
-                this.surname = Console.ReadLine();
+                this.tempUserData.Surname = Console.ReadLine() ?? "";
                 Console.Write("\n\t\t    Email:");
-                this.email = Console.ReadLine();
+                this.tempUserData.Email = Console.ReadLine() ?? "";
                 Console.Write("\n\t\t    Password:");
-                this.password = Console.ReadLine();
+                this.tempUserData.Password = Console.ReadLine() ?? "";
 
-                this.validationData = toolkits.UserDataValidator(this.name, this.surname, this.email, this.password);
+                this.validationData = toolkits.UserDataValidator(this.tempUserData);
 
                 if (this.validationData)
                 {
-                    this.findUser = toolkits.LoginHandler(this.name, this.surname, this.email, this.password);
+                    this.findUser = toolkits.LoginHandler(this.tempUserData);
 
                     if (this.findUser)
                     {
-                        fonts.GreenText($"Welcome, {this.name}");
+                        fonts.GreenText($"Welcome, {this.tempUserData.Name}");
                         fonts.GreenText("Press any key to continue...", true);
                         
-                        this.isAdmin = toolkits.CheckUserRole(this.name, this.surname, this.email, this.password);
+                        this.tempUserData.Role = toolkits.CheckUserRole(this.tempUserData);
 
-                        this.userData = new UserStruct(this.name, this.surname, this.email, this.password, this.isAdmin);
+                        this.userData = this.tempUserData;
                         break;
                     }
                     else
@@ -90,20 +74,20 @@ namespace App.UI
                 Console.WriteLine("        ________  ________  _______   ________  _________  ___  ________   ________     \r\n       |\\   ____\\|\\   __  \\|\\  ___ \\ |\\   __  \\|\\___   ___\\\\  \\|\\   ___  \\|\\   ____\\    \r\n       \\ \\  \\___|\\ \\  \\|\\  \\ \\   __/|\\ \\  \\|\\  \\|___ \\  \\_\\ \\  \\ \\  \\\\ \\  \\ \\  \\___|    \r\n        \\ \\  \\    \\ \\   _  _\\ \\  \\_|/_\\ \\   __  \\   \\ \\  \\ \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___  \r\n         \\ \\  \\____\\ \\  \\\\  \\\\ \\  \\_|\\ \\ \\  \\ \\  \\   \\ \\  \\ \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\ \r\n          \\ \\_______\\ \\__\\\\ _\\\\ \\_______\\ \\__\\ \\__\\   \\ \\__\\ \\ \\__\\ \\__\\\\ \\__\\ \\_______\\\r\n           \\|_______|\\|__|\\|__|\\|_______|\\|__|\\|__|    \\|__|  \\|__|\\|__| \\|__|\\|_______|\r\n        ________  ________  ________  ________  ___  ___  ________   _________          \r\n       |\\   __  \\|\\   ____\\|\\   ____\\|\\   __  \\|\\  \\|\\  \\|\\   ___  \\|\\___   ___\\        \r\n       \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\|___ \\  \\_|        \r\n        \\ \\   __  \\ \\  \\    \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\         \r\n         \\ \\  \\ \\  \\ \\  \\____\\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\        \r\n          \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\       \r\n           \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|\\|__| \\|__|    \\|__|       ");
                 fonts.OrangeText("The name must not include special characters.\r\n\t\t    The minimum password length is 6 characters.");
                 Console.Write("\n\t\t    Username:");
-                this.name = Console.ReadLine() ?? "";
+                this.tempUserData.Name = Console.ReadLine() ?? "";
                 Console.Write("\t\t    Surname:");
-                this.surname = Console.ReadLine() ?? "";
+                this.tempUserData.Surname = Console.ReadLine() ?? "";
                 Console.Write("\t\t    Email:");
-                this.email = Console.ReadLine() ?? "";
+                this.tempUserData.Email = Console.ReadLine() ?? "";
                 Console.Write("\t\t    Password:");
-                this.password = Console.ReadLine() ?? "";
+                this.tempUserData.Password = Console.ReadLine() ?? "";
                 Console.Write("\t\t    Confirm password:");
                 confPassword = Console.ReadLine() ?? "";
 
 
-                if (this.toolkits.UserDataValidator(this.name, this.surname, this.email, this.password) && this.password.Equals(confPassword))
+                if (this.toolkits.UserDataValidator(this.tempUserData) && this.tempUserData.Password.Equals(confPassword))
                 {
-                    UserStruct newUser = new UserStruct(this.name, this.surname, this.email, this.password, false);
+                    UserStruct newUser = this.tempUserData;
                     if(toolkits.CreateAccount(newUser))
                     {
                         fonts.GreenText("A C C O U N T   C R E A T E D");
@@ -124,35 +108,55 @@ namespace App.UI
             }
         }
 
-        public void Menu()
+        public void EditUserAccount(UserStruct user)
         {
-            Console.WriteLine("       _____ ______   _______   ________   ___  ___     \r\n      |\\   _ \\  _   \\|\\  ___ \\ |\\   ___  \\|\\  \\|\\  \\    \r\n      \\ \\  \\\\\\__\\ \\  \\ \\   __/|\\ \\  \\\\ \\  \\ \\  \\\\\\  \\   \r\n       \\ \\  \\\\|__| \\  \\ \\  \\_|/_\\ \\  \\\\ \\  \\ \\  \\\\\\  \\  \r\n        \\ \\  \\    \\ \\  \\ \\  \\_|\\ \\ \\  \\\\ \\  \\ \\  \\\\\\  \\ \r\n         \\ \\__\\    \\ \\__\\ \\_______\\ \\__\\\\ \\__\\ \\_______\\\r\n          \\|__|     \\|__|\\|_______|\\|__| \\|__|\\|_______|");
-            Console.WriteLine($"\n\t\t    C U R R E N T   U S E R: {this.name}");
-            Console.WriteLine($"\t\t    R O L E: {(this.isAdmin ? "Admin" : "Normal user")}");
-            List<string> listNormalUser = [
-                                    "Check account",
-                                    "Find product",
-                                    "Buy product",
-                                    "About program",
-                                    "Exit"
-                                        ];
-            List<string> listAdminUser = [
-                                    "Check account",
-                                    "Find product",
-                                    "Buy product",
-                                    "About program",
-                                    "Products control menu",
-                                    "Users control menu",
-                                    "Exit"
-                                        ];
-            toolkits.DisplayMenuList(this.isAdmin ? listAdminUser : listNormalUser);
+            Console.Clear();
+            Console.WriteLine("\n\t\t    Editttttttt");
+            toolkits.CheckUserInput();
+        }
+
+        public void CheckAccount()
+        {
+            Console.Clear();
+            Console.WriteLine("        ___  ___  ________  _______   ________                                   \r\n       |\\  \\|\\  \\|\\   ____\\|\\  ___ \\ |\\   __  \\                                  \r\n       \\ \\  \\\\\\  \\ \\  \\___|\\ \\   __/|\\ \\  \\|\\  \\                                 \r\n        \\ \\  \\\\\\  \\ \\_____  \\ \\  \\_|/_\\ \\   _  _\\                                \r\n         \\ \\  \\\\\\  \\|____|\\  \\ \\  \\_|\\ \\ \\  \\\\  \\|                               \r\n          \\ \\_______\\____\\_\\  \\ \\_______\\ \\__\\\\ _\\                               \r\n           \\|_______|\\_________\\|_______|\\|__|\\|__|                              \r\n        ________  __________________  ________  ___  ___  ________   _________   \r\n       |\\   __  \\|\\   ____\\|\\   ____\\|\\   __  \\|\\  \\|\\  \\|\\   ___  \\|\\___   ___\\ \r\n       \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\|___ \\  \\_| \r\n        \\ \\   __  \\ \\  \\    \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\  \r\n         \\ \\  \\ \\  \\ \\  \\____\\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \r\n          \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\\r\n           \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|\\|__| \\|__|    \\|__|");
+            Console.WriteLine($"\n\t\t    User name: {this.userData.Name}");
+            Console.WriteLine($"\t\t    Surname: {this.userData.Surname}");
+            Console.WriteLine($"\t\t    Email: {this.userData.Email}");
+            Console.WriteLine($"\t\t    Password: {this.userData.Password}");
+            Console.WriteLine($"\t\t    {(this.userData.Role ? "Admin" : "Normal user")}");
+
+            List<string> accountMenu = [
+                                        "Edit account",
+                                        "Exit"
+                                    ];
+            toolkits.DisplayMenuList(accountMenu);
+            byte input = toolkits.CheckUserInput();
+            switch (input)
+            {
+                case 1:
+                    EditUserAccount(this.userData);
+                    break;
+                case 2:
+                    menuInterfaces.Menu(this.userData);
+                    break;
+            }
+        }
+
+        public void About()
+        {
+            Console.Clear();
+            Console.WriteLine("        ________  ________  ________  ___  ___  _________   \r\n       |\\   __  \\|\\   __  \\|\\   __  \\|\\  \\|\\  \\|\\___   ___\\ \r\n       \\ \\  \\|\\  \\ \\  \\|\\ /\\ \\  \\|\\  \\ \\  \\\\\\  \\|___ \\  \\_| \r\n        \\ \\   __  \\ \\   __  \\ \\  \\\\\\  \\ \\  \\\\\\  \\   \\ \\  \\  \r\n         \\ \\  \\ \\  \\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\   \\ \\  \\ \r\n          \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\_______\\   \\ \\__\\\r\n           \\|__|\\|__|\\|_______|\\|_______|\\|_______|    \\|__|");
+            Console.WriteLine("\n\t\t    PCMARKET is a personal pet project, a minimarket where PC components are sold.");
+            Console.WriteLine("\n\t\t    The program provides the ability to manage products, divide them into \n\t\t    regular users and administrators, and also manage their rights depending on their role.");
+            Console.WriteLine("\t\t    The program allows administrators to control sales and users. Users can view their account and make purchases.");
+            fonts.OrangeText("Press any key to leave...", true);
         }
 
         public void Exit()
         {
             Console.Clear ();
             Console.WriteLine("        ________      ___    ___ _______      \r\n       |\\   __  \\    |\\  \\  /  /|\\  ___ \\     \r\n       \\ \\  \\|\\ /_   \\ \\  \\/  / | \\   __/|    \r\n        \\ \\   __  \\   \\ \\    / / \\ \\  \\_|/__  \r\n         \\ \\  \\|\\  \\   \\/  /  /   \\ \\  \\_|\\ \\ \r\n          \\ \\_______\\__/  / /      \\ \\_______\\\r\n           \\|_______|\\___/ /        \\|_______|\r\n                    \\|___|/                   ");
-            Console.WriteLine($"\n\t\t    B Y E    {this.name}");
+            Console.WriteLine($"\n\t\t    B Y E    {this.userData.Name}");
             fonts.OrangeText("Press any key to continue...", true);
         }
     }

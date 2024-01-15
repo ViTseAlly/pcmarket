@@ -75,5 +75,12 @@
     "Email": "vitalliytsenyov@gmail.com",
     "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6InF3ZXJ0eTEyMyIsImV4cCI6MTcwNTIzOTMyNH0.Pvp7VgKGh_f4Qy0BOJLL_eOlwuxjk6mH8Gg_dleD-CA",
     "Role": false
+  },
+  {
+    "Name": "testuser",
+    "Surname": "testuser",
+    "Email": "testuser@gmail.com",
+    "Password": "testuser",
+    "Role": false
   }
 ]

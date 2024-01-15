@@ -12,14 +12,14 @@ namespace App.Toolkit
         private string PATH_TO_FILE = "./Data/Users/users.json";
 
 
-        public bool UserDataValidator(string name, string surname, string email, string password)
+        public bool UserDataValidator(UserStruct user)
         {
-            bool nameValidation = name.Any(c => this.badCharacters.Contains(c));
-            bool surnameValidation = surname.Any(c => this.badCharacters.Contains(c));
-            bool emailValidation = email.Any(c => this.badEmailCharacters.Contains(c));
-            bool passwordValidation = password.Length > 6;
+            bool nameValidation = user.Name.Any(c => this.badCharacters.Contains(c));
+            bool surnameValidation = user.Surname.Any(c => this.badCharacters.Contains(c));
+            bool emailValidation = user.Email.Any(c => this.badEmailCharacters.Contains(c));
+            bool passwordValidation = user.Password.Length > 6;
 
-            bool isEmailValid = !emailValidation && email.Contains('@');
+            bool isEmailValid = !emailValidation && user.Email.Contains('@');
 
             return !(nameValidation || surnameValidation || !isEmailValid || !passwordValidation);
         }
@@ -50,11 +50,10 @@ namespace App.Toolkit
                user.Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase);
         }
 
-        public bool LoginHandler(string username, string surname, string email, string password)
+        public bool LoginHandler(UserStruct userData)
         {
             List<UserStruct> userList = GetDataFromJsonFile(PATH_TO_FILE);
 
-            UserStruct userData = new UserStruct(username, surname, email, password, false);
             foreach (UserStruct user in userList)
             {
                 if(FindUserAccount(user, userData)) return FindUserAccount(user, userData);
@@ -62,10 +61,9 @@ namespace App.Toolkit
             return false;
         }
 
-        public bool CheckUserRole(string name, string surname, string email, string password)
+        public bool CheckUserRole(UserStruct userData)
         {
             List<UserStruct> userList = GetDataFromJsonFile(PATH_TO_FILE);
-            UserStruct userData = new UserStruct(name, surname, email, password, false);
 
             foreach (UserStruct user in userList)
             {
@@ -81,9 +79,9 @@ namespace App.Toolkit
         private List<UserStruct> GetDataFromJsonFile(string filePath)
         {
             string jsonContent = File.ReadAllText(filePath);
-            List<UserStruct> userList = JsonConvert.DeserializeObject<List<UserStruct>>(jsonContent);
+            List<UserStruct> userList = JsonConvert.DeserializeObject<List<UserStruct>>(jsonContent) ?? new List<UserStruct>();
 
-            return userList ?? new List<UserStruct>();
+            return userList;
         }
 
         public bool CreateAccount(UserStruct newUser)
