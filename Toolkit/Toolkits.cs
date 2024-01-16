@@ -6,23 +6,10 @@ namespace App.Toolkit
 {
     internal class Toolkits
     {
-        private HashSet<char> badCharacters = new HashSet<char> { '\n', '\t', '#', '!', '%', '^', '*', '?', '/', '\\', '.', ',', '+' };
-        private HashSet<char> badEmailCharacters = new HashSet<char> { ' ', '\n', ',', '!', '#', '\\', '/', '|', '!', '%', '^', '*', '?' };
         private Fonts fonts = new Fonts();
-        private string PATH_TO_FILE = "./Data/Users/users.json";
+        private string PATH_TO_USERS_FILE = "./Data/Users/users.json";
+        private string PATH_TO_PRODUCT_FILES = "./Data/Components/products.json";
 
-
-        public bool UserDataValidator(UserStruct user)
-        {
-            bool nameValidation = user.Name.Any(c => this.badCharacters.Contains(c));
-            bool surnameValidation = user.Surname.Any(c => this.badCharacters.Contains(c));
-            bool emailValidation = user.Email.Any(c => this.badEmailCharacters.Contains(c));
-            bool passwordValidation = user.Password.Length > 6;
-
-            bool isEmailValid = !emailValidation && user.Email.Contains('@');
-
-            return !(nameValidation || surnameValidation || !isEmailValid || !passwordValidation);
-        }
 
         public byte CheckUserInput()
         {
@@ -42,66 +29,17 @@ namespace App.Toolkit
             return result;
         }
 
-        public bool FindUserAccount(UserStruct user, UserStruct userData)
-        {
-            return user.Name.Equals(userData.Name, StringComparison.OrdinalIgnoreCase) &&
-               user.Surname.Equals(userData.Surname, StringComparison.OrdinalIgnoreCase) &&
-               user.Password.Equals(userData.Password) &&
-               user.Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase);
-        }
 
-        public bool LoginHandler(UserStruct userData)
-        {
-            List<UserStruct> userList = GetDataFromJsonFile(PATH_TO_FILE);
-
-            foreach (UserStruct user in userList)
-            {
-                if(FindUserAccount(user, userData)) return FindUserAccount(user, userData);
-            }
-            return false;
-        }
-
-        public bool CheckUserRole(UserStruct userData)
-        {
-            List<UserStruct> userList = GetDataFromJsonFile(PATH_TO_FILE);
-
-            foreach (UserStruct user in userList)
-            {
-                if (FindUserAccount(user, userData))
-                {
-                    return user.Role;
-                }
-            }
-
-            return false;
-        }
-
-        private List<UserStruct> GetDataFromJsonFile(string filePath)
+        public List<UserStruct> GetDataFromUsersJsonFile(string filePath)
         {
             string jsonContent = File.ReadAllText(filePath);
-            List<UserStruct> userList = JsonConvert.DeserializeObject<List<UserStruct>>(jsonContent) ?? new List<UserStruct>();
-
-            return userList;
+            return JsonConvert.DeserializeObject<List<UserStruct>>(jsonContent) ?? new List<UserStruct>();
         }
 
-        public bool CreateAccount(UserStruct newUser)
+        public List<ProductStruct> GetDataFromProductsJsonFile(string filePath)
         {
-            List<UserStruct> userList = GetDataFromJsonFile(PATH_TO_FILE);
-
-            foreach (UserStruct user in userList)
-            {
-                if (FindUserAccount(user, newUser))
-                {
-                    return false;
-                }
-            }
-
-            userList.Add(newUser);
-
-            string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
-            File.WriteAllText(PATH_TO_FILE, jsonContent);
-
-            return true;
+            string jsonContent = File.ReadAllText(filePath);
+            return JsonConvert.DeserializeObject<List<ProductStruct>>(jsonContent) ?? new List<ProductStruct>();
         }
 
         public void DisplayMenuList(List<string> list)
