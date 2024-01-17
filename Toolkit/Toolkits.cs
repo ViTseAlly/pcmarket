@@ -7,9 +7,6 @@ namespace App.Toolkit
     internal class Toolkits
     {
         private Fonts fonts = new Fonts();
-        private string PATH_TO_USERS_FILE = "./Data/Users/users.json";
-        private string PATH_TO_PRODUCT_FILES = "./Data/Components/products.json";
-
 
         public byte CheckUserInput()
         {
@@ -28,7 +25,6 @@ namespace App.Toolkit
             }
             return result;
         }
-
 
         public List<UserStruct> GetDataFromUsersJsonFile(string filePath)
         {

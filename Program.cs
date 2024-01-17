@@ -50,6 +50,10 @@ namespace Project
                         case 1:
                             interfaces.CheckAccount();
                             break;
+                        case 2:
+                            interfaces.FindProduct("qwe");
+                            interfaces.Menu();
+                            break;
                         case 3:
                             interfaces.About();
                             interfaces.Menu();
@@ -66,6 +70,10 @@ namespace Project
                     {
                         case 1:
                             interfaces.CheckAccount();
+                            break;
+                        case 2:
+                            interfaces.FindProduct("qwe");
+                            interfaces.Menu();
                             break;
                         case 3:
                             interfaces.About();

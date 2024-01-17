@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using App.Toolkit;
 using App.Structs;
 
@@ -11,10 +12,11 @@ namespace App.UI
         private bool validationData = false;
         private bool findUser = false;
         private UserStruct userData;
-
         Toolkits toolkits = new Toolkits();
+        ProductToolkits prtoolkits = new ProductToolkits();
         UserAccountToolkits uatoolkits = new UserAccountToolkits();
         Fonts fonts = new Fonts();
+
 
         public void Start()
         {
@@ -111,7 +113,7 @@ namespace App.UI
             }
         }
 
-        public void EditUserAccount(UserStruct userData)
+        public void EditUserAccount()
         {
             UserStruct newUserData = new UserStruct();
             bool accountInformationUpdated = false;
@@ -121,21 +123,23 @@ namespace App.UI
                 Console.Clear();
                 Console.WriteLine("            _______   ________  ___  _________                                       \r\n       |\\  ___ \\ |\\   ___ \\|\\  \\|\\___   ___\\                                     \r\n       \\ \\   __/|\\ \\  \\_|\\ \\ \\  \\|___ \\  \\_|                                     \r\n        \\ \\  \\_|/_\\ \\  \\ \\\\ \\ \\  \\   \\ \\  \\                                      \r\n         \\ \\  \\_|\\ \\ \\  \\_\\\\ \\ \\  \\   \\ \\  \\                                     \r\n          \\ \\_______\\ \\_______\\ \\__\\   \\ \\__\\                                    \r\n           \\|_______|\\|_______|\\|__|    \\|__|                                    \r\n        ________  ________  ________  ________  ___  ___  ________   _________   \r\n       |\\   __  \\|\\   ____\\|\\   ____\\|\\   __  \\|\\  \\|\\  \\|\\   ___  \\|\\___   ___\\ \r\n       \\ \\  \\|\\  \\ \\  \\___|\\ \\  \\___|\\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\|___ \\  \\_| \r\n        \\ \\   __  \\ \\  \\    \\ \\  \\    \\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\  \r\n         \\ \\  \\ \\  \\ \\  \\____\\ \\  \\____\\ \\  \\\\\\  \\ \\  \\\\\\  \\ \\  \\\\ \\  \\   \\ \\  \\ \r\n          \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\ \\__\\\\ \\__\\   \\ \\__\\\r\n           \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|\\|__| \\|__|    \\|__|");
                 fonts.OrangeText("\n\t\t    Old account information:");
-                userData.GetAllUserData();
+                this.userData.GetAllUserData();
                 fonts.OrangeText("\n\t\t    Write new account information:");
                 newUserData.SetAllUserData();
-                newUserData.Role = userData.Role;
+                newUserData.Role = this.userData.Role;
 
                 if(!uatoolkits.FindUserAccount(newUserData)[0] && uatoolkits.UserDataValidator(newUserData))
                 {
-                    uatoolkits.DeleteAccount(this.userData);
-                    uatoolkits.CreateAccount(newUserData);
-                    this.userData = newUserData;
-                    this.userData.Role = newUserData.Role;
+                    if(uatoolkits.DeleteAccount(this.userData))
+                    {
+                        uatoolkits.CreateAccount(newUserData);
+                        this.userData = newUserData;
+                        this.userData.Role = newUserData.Role;
 
-                    fonts.GreenText("A C C O U N T   I N F O R M A T I O N   H A S   B E E N   U P D A T E D");
-                    fonts.GreenText("Press any key to continue...", true);
-                    accountInformationUpdated = true;
+                        fonts.GreenText("A C C O U N T   I N F O R M A T I O N   H A S   B E E N   U P D A T E D");
+                        fonts.GreenText("Press any key to continue...", true);
+                        accountInformationUpdated = true;
+                    }
                 }
                 else
                 {
@@ -161,8 +165,7 @@ namespace App.UI
             switch(input)
             {
                 case 1:
-                    EditUserAccount(this.userData);
-                    
+                    EditUserAccount();
                     break;
                 case 2:
                     Menu();
@@ -172,7 +175,9 @@ namespace App.UI
 
         public void FindProduct(String options)
         {
-            
+            prtoolkits.GelAllProducts();
+            fonts.GreenText("A L L   D A T A");
+            fonts.GreenText("Press key to leave...", true);
         }
 
         public void About()
@@ -201,7 +206,7 @@ namespace App.UI
             Console.WriteLine($"\t\t    R O L E: {(this.userData.Role ? "Admin" : "Normal user")}");
             List<string> listNormalUser = [
                                     "Check account",          // Created
-                                    "Find product",
+                                    "Find product",           // Creating...
                                     "About program",          // Created
                                     "Exit"                    // Created
                                         ];

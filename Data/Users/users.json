@@ -1,12 +1,5 @@
 [
   {
-    "Name": "Vitalliy",
-    "Surname": "Tsenyov",
-    "Email": "vitalliytsenyov@gmail.com",
-    "Password": "qwerty123",
-    "Role": true
-  },
-  {
     "Name": "Elena",
     "Surname": "Ivanova",
     "Email": "elena.ivanova@email.com",
@@ -73,21 +66,7 @@
     "Name": "qwerty",
     "Surname": "qwerty",
     "Email": "qwerty@qwe",
-    "Password": "qwerty123456",
-    "Role": false
-  },
-  {
-    "Name": "PIPOPOPOPO",
-    "Surname": "PIPOPOPOPO",
-    "Email": "pipopopopo@gmail.com",
-    "Password": "pipopopopo123",
-    "Role": true
-  },
-  {
-    "Name": "tsenyov",
-    "Surname": "vitalii",
-    "Email": "tsenyovvitalii@gmail.com",
-    "Password": "qwerty123321",
+    "Password": "qwerty123",
     "Role": true
   }
 ]

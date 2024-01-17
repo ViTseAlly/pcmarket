@@ -1,5 +1,4 @@
 using App.Structs;
-using App.Toolkit;
 using Newtonsoft.Json;
 
 
@@ -11,6 +10,7 @@ namespace App.Toolkit
         private HashSet<char> badCharacters = new HashSet<char> { '\n', '\t', '#', '!', '%', '^', '*', '?', '/', '\\', '.', ',', '+' };
         private HashSet<char> badEmailCharacters = new HashSet<char> { ' ', '\n', ',', '!', '#', '\\', '/', '|', '!', '%', '^', '*', '?' };
         Toolkits toolkits = new Toolkits();
+        Fonts fonts = new Fonts();
         private string PATH_TO_USERS_FILE = "./Data/Users/users.json";
 
         public bool CreateAccount(UserStruct newUser)
@@ -31,27 +31,22 @@ namespace App.Toolkit
 
         public bool DeleteAccount(UserStruct userData)
         {
-            try
+            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            for (int i = 0; i < usersList.Count; i++)
             {
-                List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
-
-                if (FindUserAccount(userData)[0])
+                if (string.Equals(usersList[i].Name, userData.Name, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(usersList[i].Surname, userData.Surname, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(usersList[i].Email, userData.Email, StringComparison.OrdinalIgnoreCase))
                 {
-                    userList.Remove(userData);
-                    string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
+                    usersList.RemoveAt(i);
+                    File.Delete(this.PATH_TO_USERS_FILE);
+                    string jsonContent = JsonConvert.SerializeObject(usersList, Formatting.Indented);
                     File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
                 return false;
             }
+            return false;
         }
     
         public bool UserDataValidator(UserStruct user)

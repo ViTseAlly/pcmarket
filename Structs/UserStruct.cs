@@ -12,7 +12,7 @@ namespace App.Structs
         public bool Role { get; set; }
 
         [JsonConstructor]
-        public UserStruct(string name, string surname, string email, string password, bool role = false)
+        public UserStruct( string name, string surname, string email, string password, bool role = false)
         {
             Name = name;
             Surname = surname;
@@ -42,9 +42,5 @@ namespace App.Structs
             this.Password = Console.ReadLine() ?? "";
         }
 
-        public bool EqualTwoUser(UserStruct userCheckData)
-        {
-            return Name == userCheckData.Name && Surname == userCheckData.Surname && Email == userCheckData.Email && Password == userCheckData.Password;
-        }
     }
 }
