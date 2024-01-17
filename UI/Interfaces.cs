@@ -55,6 +55,7 @@ namespace App.UI
                         fonts.GreenText("Press any key to continue...", true);
                         
                         tempUserData.Role = uatoolkits.FindUserAccount(tempUserData)[1];
+                        tempUserData.PusharedProducts = uatoolkits.GetPusharedProducts(tempUserData);
 
                         this.userData = tempUserData;
                         break;
@@ -86,7 +87,7 @@ namespace App.UI
                 fonts.OrangeText("The name must not include special characters.\r\n\t\t    The minimum password length is 6 characters.");
 
                 tempUserData.SetAllUserData();
-                Console.Write("\t\t    Confirm password:");
+                Console.Write("\n\t\t    Confirm password:");
                 confPassword = Console.ReadLine() ?? "";
 
 
@@ -127,6 +128,7 @@ namespace App.UI
                 fonts.OrangeText("\n\t\t    Write new account information:");
                 newUserData.SetAllUserData();
                 newUserData.Role = this.userData.Role;
+                newUserData.PusharedProducts = this.userData.PusharedProducts;
 
                 if(!uatoolkits.FindUserAccount(newUserData)[0] && uatoolkits.UserDataValidator(newUserData))
                 {
@@ -139,6 +141,11 @@ namespace App.UI
                         fonts.GreenText("A C C O U N T   I N F O R M A T I O N   H A S   B E E N   U P D A T E D");
                         fonts.GreenText("Press any key to continue...", true);
                         accountInformationUpdated = true;
+                    }
+                    else
+                    {
+                        fonts.RedText("U S E R   N O T  F I N D");
+                        fonts.OrangeText("Press any key to try again...", true);
                     }
                 }
                 else
@@ -173,20 +180,71 @@ namespace App.UI
             }
         }
 
-        public void FindProduct(String options)
+        public void FindProduct()
         {
-            prtoolkits.GelAllProducts();
-            fonts.GreenText("A L L   D A T A");
-            fonts.GreenText("Press key to leave...", true);
+            List<ProductStruct> prosuctsList = new List<ProductStruct>();
+            byte userInput;
+
+            Console.Clear();
+            Console.WriteLine("        ________ ___  ________   ________  ___  ________   ________            \r\n       |\\  _____\\\\  \\|\\   ___  \\|\\   ___ \\|\\  \\|\\   ___  \\|\\   ____\\           \r\n       \\ \\  \\__/\\ \\  \\ \\  \\\\ \\  \\ \\  \\_|\\ \\ \\  \\ \\  \\\\ \\  \\ \\  \\___|           \r\n        \\ \\   __\\\\ \\  \\ \\  \\\\ \\  \\ \\  \\ \\\\ \\ \\  \\ \\  \\\\ \\  \\ \\  \\  ___         \r\n         \\ \\  \\_| \\ \\  \\ \\  \\\\ \\  \\ \\  \\_\\\\ \\ \\  \\ \\  \\\\ \\  \\ \\  \\|\\  \\        \r\n          \\ \\__\\   \\ \\__\\ \\__\\\\ \\__\\ \\_______\\ \\__\\ \\__\\\\ \\__\\ \\_______\\       \r\n           \\|__|    \\|__|\\|__| \\|__|\\|_______|\\|__|\\|__| \\|__|\\|_______|       \r\n        ________  ________  ________  ________  ___  ___  ________ _________   \r\n       |\\   __  \\|\\   __  \\|\\   __  \\|\\   ___ \\|\\  \\|\\  \\|\\   ____\\\\___   ___\\ \r\n       \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\\\  \\ \\  \\___\\|___ \\  \\_| \r\n        \\ \\   ____\\ \\   _  _\\ \\  \\\\\\  \\ \\  \\ \\\\ \\ \\  \\\\\\  \\ \\  \\       \\ \\  \\  \r\n         \\ \\  \\___|\\ \\  \\\\  \\\\ \\  \\\\\\  \\ \\  \\_\\\\ \\ \\  \\\\\\  \\ \\  \\____   \\ \\  \\ \r\n          \\ \\__\\    \\ \\__\\\\ _\\\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\  \\ \\__\\\r\n           \\|__|     \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|   \\|__|");
+            Console.WriteLine("\n\t\t    Select the parameter by which the search will be performed:");
+            List<string> list = [
+                                    "Search by product type",
+                                    "Seach by product name",
+                                    "Search by product price"
+                                ];
+            toolkits.DisplayMenuList(list);
+            userInput = toolkits.CheckUserInput();
+            prtoolkits.GetAllProducts(prtoolkits.FindProducts(userInput));
+
+            List<string> listPr = [
+                                    "Pushare product",
+                                    "Exit"
+                                ];
+            toolkits.DisplayMenuList(listPr);
+            userInput = toolkits.CheckUserInput();
+            switch(userInput)
+            {
+                case 1:
+                    BuyProduct();
+                    break;
+                case 2:
+                    Menu();
+                    break;
+                default:
+                    fonts.RedText("I N C O R R E C T   T R Y   A G A I N");
+                    break;
+            }    
+        }
+
+        public void BuyProduct()
+        {
+            Console.Clear();
+            Console.WriteLine("        ________  ________  ________  ________  ___  ___  ________ _________     \r\n       |\\   __  \\|\\   __  \\|\\   __  \\|\\   ___ \\|\\  \\|\\  \\|\\   ____\\\\___   ___\\   \r\n       \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\\\  \\ \\  \\___\\|___ \\  \\_|   \r\n        \\ \\   ____\\ \\   _  _\\ \\  \\\\\\  \\ \\  \\ \\\\ \\ \\  \\\\\\  \\ \\  \\       \\ \\  \\    \r\n         \\ \\  \\___|\\ \\  \\\\  \\\\ \\  \\\\\\  \\ \\  \\_\\\\ \\ \\  \\\\\\  \\ \\  \\____   \\ \\  \\   \r\n          \\ \\__\\    \\ \\__\\\\ _\\\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\  \\ \\__\\  \r\n           \\|__|     \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|   \\|__|  \r\n        ________  ___  ___  ________  ___  ___  ________  ________  _______      \r\n       |\\   __  \\|\\  \\|\\  \\|\\   ____\\|\\  \\|\\  \\|\\   __  \\|\\   __  \\|\\  ___ \\     \r\n       \\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\   __/|    \r\n        \\ \\   ____\\ \\  \\\\\\  \\ \\_____  \\ \\   __  \\ \\   __  \\ \\   _  _\\ \\  \\_|/__  \r\n         \\ \\  \\___|\\ \\  \\\\\\  \\|____|\\  \\ \\  \\ \\  \\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\_|\\ \\ \r\n          \\ \\__\\    \\ \\_______\\____\\_\\  \\ \\__\\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\\r\n           \\|__|     \\|_______|\\_________\\|__|\\|__|\\|__|\\|__|\\|__|\\|__|\\|_______|\r\n                              \\|_________|                                       ");
+            Console.Write("\n\t\t    Write product id:\n\t\t    >>>");
+            if(int.TryParse(Console.ReadLine(), out int productId))
+            {
+                ProductStruct pusharedProduct = prtoolkits.GetProductById(productId);
+                this.userData.PusharedProducts.Add(pusharedProduct.Name);
+                uatoolkits.InsertProductInFile(this.userData, pusharedProduct);
+                fonts.GreenText("P R O D U C T   W A S   P U S H A R E D");
+                fonts.GreenText("Press any key for leave...", true);
+            }
+            else
+            {
+                fonts.RedText("N O T   F I N D   P R O D U C T");
+                fonts.OrangeText("Press any key to leave...", true);
+                Menu();
+            }
         }
 
         public void About()
         {
             Console.Clear();
             Console.WriteLine("        ________  ________  ________  ___  ___  _________   \r\n       |\\   __  \\|\\   __  \\|\\   __  \\|\\  \\|\\  \\|\\___   ___\\ \r\n       \\ \\  \\|\\  \\ \\  \\|\\ /\\ \\  \\|\\  \\ \\  \\\\\\  \\|___ \\  \\_| \r\n        \\ \\   __  \\ \\   __  \\ \\  \\\\\\  \\ \\  \\\\\\  \\   \\ \\  \\  \r\n         \\ \\  \\ \\  \\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\\\\\  \\   \\ \\  \\ \r\n          \\ \\__\\ \\__\\ \\_______\\ \\_______\\ \\_______\\   \\ \\__\\\r\n           \\|__|\\|__|\\|_______|\\|_______|\\|_______|    \\|__|");
-            Console.WriteLine("\n\t\t    PCMARKET is a personal pet project, a minimarket where PC components are sold.");
-            Console.WriteLine("\n\t\t    The program provides the ability to manage products, divide them into \n\t\t    regular users and administrators, and also manage their rights depending on their role.");
-            Console.WriteLine("\t\t    The program allows administrators to control sales and users. Users can view their account and make purchases.");
+            Console.WriteLine("\n\t\t     PCMARKET is a personal pet project, a minimarket\n\t\t     where PC components are sold.");
+            Console.WriteLine("\n\t\t    The program provides the ability to manage products,\n\t\t     divide them into regular users and administrators,\n\t\t     and also manage their rights depending on their role.");
+            Console.WriteLine("\t\t    The program allows administrators to control sales and users.\n\t\t     Users can view their account and make purchases.");
             fonts.OrangeText("Press any key to leave...", true);
         }
 
@@ -201,14 +259,15 @@ namespace App.UI
         public void Menu()
         {
             Console.Clear();
+            Console.Clear();
             Console.WriteLine("       _____ ______   _______   ________   ___  ___     \r\n      |\\   _ \\  _   \\|\\  ___ \\ |\\   ___  \\|\\  \\|\\  \\    \r\n      \\ \\  \\\\\\__\\ \\  \\ \\   __/|\\ \\  \\\\ \\  \\ \\  \\\\\\  \\   \r\n       \\ \\  \\\\|__| \\  \\ \\  \\_|/_\\ \\  \\\\ \\  \\ \\  \\\\\\  \\  \r\n        \\ \\  \\    \\ \\  \\ \\  \\_|\\ \\ \\  \\\\ \\  \\ \\  \\\\\\  \\ \r\n         \\ \\__\\    \\ \\__\\ \\_______\\ \\__\\\\ \\__\\ \\_______\\\r\n          \\|__|     \\|__|\\|_______|\\|__| \\|__|\\|_______|");
             Console.WriteLine($"\n\t\t    C U R R E N T   U S E R: {this.userData.Name}");
             Console.WriteLine($"\t\t    R O L E: {(this.userData.Role ? "Admin" : "Normal user")}");
             List<string> listNormalUser = [
-                                    "Check account",          // Created
-                                    "Find product",           // Creating...
-                                    "About program",          // Created
-                                    "Exit"                    // Created
+                                    "Check account",
+                                    "Find product",
+                                    "About program",
+                                    "Exit"
                                         ];
             List<string> listAdminUser = [
                                     "Check account",

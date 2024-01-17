@@ -4,69 +4,82 @@
     "Surname": "Ivanova",
     "Email": "elena.ivanova@email.com",
     "Password": "strongPassword",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Alex",
     "Surname": "Petrov",
     "Email": "alex.petrov@example.com",
     "Password": "securePass123",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Olga",
     "Surname": "Kuznetsova",
     "Email": "olga.kuznetsova@mail.ru",
     "Password": "mySecret123",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Dmitriy",
     "Surname": "Sokolov",
     "Email": "dmitriy.sokolov@gmail.com",
     "Password": "pass1234",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Anna",
     "Surname": "Popova",
     "Email": "anna.popova@example.org",
     "Password": "password123",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Sergey",
     "Surname": "Mikhailov",
     "Email": "sergey.mikhailov@mail.com",
     "Password": "securePass",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Natalia",
     "Surname": "Kovalenko",
     "Email": "natalia.kovalenko@example.com",
     "Password": "password@123",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Igor",
     "Surname": "Novikov",
     "Email": "igor.novikov@gmail.com",
     "Password": "qwerty987",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
     "Name": "Yulia",
     "Surname": "Konovalova",
     "Email": "yulia.konovalova@email.net",
     "Password": "mySecurePass",
-    "Role": false
+    "Role": false,
+    "PusharedProducts": []
   },
   {
-    "Name": "qwerty",
-    "Surname": "qwerty",
-    "Email": "qwerty@qwe",
-    "Password": "qwerty123",
-    "Role": true
+    "Name": "qweewq",
+    "Surname": "qweewq",
+    "Email": "qweewq@qwe",
+    "Password": "qweewq123",
+    "Role": true,
+    "PusharedProducts": [
+      "NVIDIA GeForce GT 1030",
+      "High-End Motherboard"
+    ]
   }
 ]

@@ -32,6 +32,7 @@ namespace App.Toolkit
         public bool DeleteAccount(UserStruct userData)
         {
             List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+
             for (int i = 0; i < usersList.Count; i++)
             {
                 if (string.Equals(usersList[i].Name, userData.Name, StringComparison.OrdinalIgnoreCase) &&
@@ -44,19 +45,19 @@ namespace App.Toolkit
                     File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
                     return true;
                 }
-                return false;
             }
-            return false;
+
+            return false; 
         }
     
-        public bool UserDataValidator(UserStruct user)
+        public bool UserDataValidator(UserStruct userData)
         {
-            bool nameValidation = user.Name.Any(c => this.badCharacters.Contains(c));
-            bool surnameValidation = user.Surname.Any(c => this.badCharacters.Contains(c));
-            bool emailValidation = user.Email.Any(c => this.badEmailCharacters.Contains(c));
-            bool passwordValidation = user.Password.Length > 6;
+            bool nameValidation = userData.Name.Any(c => this.badCharacters.Contains(c));
+            bool surnameValidation = userData.Surname.Any(c => this.badCharacters.Contains(c));
+            bool emailValidation = userData.Email.Any(c => this.badEmailCharacters.Contains(c));
+            bool passwordValidation = userData.Password.Length > 6;
 
-            bool isEmailValid = !emailValidation && user.Email.Contains('@');
+            bool isEmailValid = !emailValidation && userData.Email.Contains('@');
 
             return !(nameValidation || surnameValidation || !isEmailValid || !passwordValidation);
         }
@@ -77,5 +78,37 @@ namespace App.Toolkit
             }
             return new bool[] {false, false};
         }
+    
+        public List<string> GetPusharedProducts(UserStruct userData)
+        {
+            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            foreach(UserStruct user in usersList)
+            {
+                 if(user.Name.Equals(userData.Name, StringComparison.OrdinalIgnoreCase) &&
+               user.Surname.Equals(userData.Surname, StringComparison.OrdinalIgnoreCase) &&
+               user.Password.Equals(userData.Password) &&
+               user.Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase))
+               {
+                return user.PusharedProducts;
+               }
+            }
+            return new List<string>();
+        }
+            
+        public bool InsertProductInFile(UserStruct userData, ProductStruct productData)
+        {
+            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+
+            UserStruct userToUpdate = userList.FirstOrDefault(u =>
+                string.Equals(u.Name, userData.Name, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(u.Surname, userData.Surname, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(u.Email, userData.Email, StringComparison.OrdinalIgnoreCase));
+
+            userToUpdate.PusharedProducts.Add(productData.Name);
+            string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
+            File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
+            return true;
+        }
+
     }
 }

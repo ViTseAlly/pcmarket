@@ -51,7 +51,7 @@ namespace Project
                             interfaces.CheckAccount();
                             break;
                         case 2:
-                            interfaces.FindProduct("qwe");
+                            interfaces.FindProduct();
                             interfaces.Menu();
                             break;
                         case 3:
@@ -72,7 +72,7 @@ namespace Project
                             interfaces.CheckAccount();
                             break;
                         case 2:
-                            interfaces.FindProduct("qwe");
+                            interfaces.FindProduct();
                             interfaces.Menu();
                             break;
                         case 3:

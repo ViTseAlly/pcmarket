@@ -2,14 +2,18 @@ using App.Toolkit;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 
 namespace App.Structs
 {
     public struct ProductStruct
     {
+        private string PATH_TO_PRODUCTS_FILE = "./Data/Components/products.json";
         Toolkits toolkits;
+        ProductToolkits prtoolkits = new ProductToolkits();
         Fonts fonts;
 
+        public int Id { get; set; }
         public string Type { get; set; }
         public string Name { get; set; }
         public int Count { get; set; }
@@ -17,10 +21,11 @@ namespace App.Structs
         public string Information { get; set; }
 
         [JsonConstructor]
-        public ProductStruct(string type, string name, int count, int price, string information)
+        public ProductStruct(int id, string type, string name, int count, int price, string information)
         {
             toolkits = new Toolkits();
             fonts = new Fonts();
+            Id = id;
             Type = type;
             Name = name;
             Count = count;
@@ -31,7 +36,8 @@ namespace App.Structs
 
         public void GetAllProductData()
         {
-            Console.WriteLine($"\n\t\t    Type: {Type}");
+            Console.WriteLine($"\n\t\t    Id: {Id}");
+            Console.WriteLine($"\t\t    Type: {Type}");
             Console.WriteLine($"\t\t    Name: {Name}");
             Console.WriteLine($"\t\t    In stock: {Count}");
             Console.WriteLine($"\t\t    Price: {Price}$");
@@ -41,6 +47,8 @@ namespace App.Structs
         public void SetAllProductData()
         {
             List<string> types = new List<string> { "Connector", "CPU", "Frame", "GPU", "Motherboard", "Memory", "Frame", "mouse", "RAM" };
+            List<ProductStruct> productsList = toolkits.GetDataFromProductsJsonFile(this.PATH_TO_PRODUCTS_FILE);
+            Id = productsList[productsList.Count].Id + 1;
 
             Console.Write($"\n\t\t    Type:");
             toolkits.DisplayMenuList(types);
