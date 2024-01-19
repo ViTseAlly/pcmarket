@@ -56,14 +56,6 @@
     "PusharedProducts": []
   },
   {
-    "Name": "Igor",
-    "Surname": "Novikov",
-    "Email": "igor.novikov@gmail.com",
-    "Password": "qwerty987",
-    "Role": false,
-    "PusharedProducts": []
-  },
-  {
     "Name": "Yulia",
     "Surname": "Konovalova",
     "Email": "yulia.konovalova@email.net",
@@ -75,11 +67,32 @@
     "Name": "qweewq",
     "Surname": "qweewq",
     "Email": "qweewq@qwe",
-    "Password": "qweewq123",
+    "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoicXdlZXdxMTIzIn0.7UfEuvO63lTPxQz_awS0BT0VDP-6KFGk0l0wBP2xGzM",
     "Role": true,
-    "PusharedProducts": [
-      "NVIDIA GeForce GT 1030",
-      "High-End Motherboard"
-    ]
+    "PusharedProducts": []
+  },
+  {
+    "Name": "Testuser",
+    "Surname": "Testuser",
+    "Email": "Testuser@qwe",
+    "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiVGVzdHVzZXIifQ.5qCFj6VrVvn6YuHnmWKnfchji6pZuupkfq-OiImhQ6Q",
+    "Role": false,
+    "PusharedProducts": []
+  },
+  {
+    "Name": "admin",
+    "Surname": "admin",
+    "Email": "admin@qwe",
+    "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiYWRtaW4xMjMifQ.uTm8zuOxNNj6t8Jd9w8t6vlCk6vIUeASvdjlJwWWvag",
+    "Role": true,
+    "PusharedProducts": []
+  },
+  {
+    "Name": "newdata",
+    "Surname": "newdata",
+    "Email": "newdata@qwe",
+    "Password": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoibmV3ZGF0YSJ9.vbHVk0Vko0U6yrwOKwY0YMSqoWGdr9VdpCR4D8Q5uKQ",
+    "Role": false,
+    "PusharedProducts": []
   }
 ]

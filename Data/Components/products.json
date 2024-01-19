@@ -1,452 +1,458 @@
 [
-    
-{
-    "id": 1,
-  "type": "Connector",
-  "name": "USB 3.0 Cable",
-  "count": 10,
-  "price": 50,
-  "information": "Type: A to B, Length: 1 meter, Color: Blue, Transfer Rate: 5 Gbps, Connector Type: Gold-plated"
+  {
+    "Id": 4,
+    "Type": "Connector",
+    "Name": "Ethernet Cable",
+    "Count": 12,
+    "Price": 35,
+    "Information": "Type: Cat 6, Length: 3 meters, Color: Gray, Speed: 1 Gbps, Connector Type: Gold-plated"
   },
   {
-    "id": 2,
-  "type": "Connector",
-  "name": "HDMI Cable",
-  "count": 15,
-  "price": 40,
-  "information": "Type: Standard HDMI, Length: 2 meters, Color: Black, Version: 2.0, Connector Type: Nickel-plated"
+    "Id": 5,
+    "Type": "Connector",
+    "Name": "DisplayPort Cable",
+    "Count": 18,
+    "Price": 25,
+    "Information": "Type: DisplayPort to DisplayPort, Length: 2 meters, Color: Black, Version: 1.4, Connector Type: Gold-plated"
   },
   {
-    "id": 3,
-  "type": "Connector",
-  "name": "VGA Cable",
-  "count": 8,
-  "price": 60,
-  "information": "Type: VGA to VGA, Length: 1.5 meters, Color: White, Resolution: 1080p, Connector Type: Silver-plated"
+    "Id": 6,
+    "Type": "Connector",
+    "Name": "Audio Jack Cable",
+    "Count": 6,
+    "Price": 70,
+    "Information": "Type: 3.5mm Stereo, Length: 1.2 meters, Color: Red, Connector Type: Nickel-plated, Compatibility: Universal"
   },
   {
-    "id": 4,
-  "type": "Connector",
-  "name": "Ethernet Cable",
-  "count": 12,
-  "price": 35,
-  "information": "Type: Cat 6, Length: 3 meters, Color: Gray, Speed: 1 Gbps, Connector Type: Gold-plated"
+    "Id": 7,
+    "Type": "Connector",
+    "Name": "SATA Cable",
+    "Count": 9,
+    "Price": 55,
+    "Information": "Type: SATA III, Length: 0.5 meters, Color: Yellow, Speed: 6 Gbps, Connector Type: Locking Latch"
   },
   {
-    "id": 5,
-  "type": "Connector",
-  "name": "DisplayPort Cable",
-  "count": 18,
-  "price": 25,
-  "information": "Type: DisplayPort to DisplayPort, Length: 2 meters, Color: Black, Version: 1.4, Connector Type: Gold-plated"
+    "Id": 8,
+    "Type": "Connector",
+    "Name": "DVI Cable",
+    "Count": 14,
+    "Price": 30,
+    "Information": "Type: DVI-D, Length: 1.8 meters, Color: White, Resolution: 1440p, Connector Type: Gold-plated"
   },
   {
-    "id": 6,
-  "type": "Connector",
-  "name": "Audio Jack Cable",
-  "count": 6,
-  "price": 70,
-  "information": "Type: 3.5mm Stereo, Length: 1.2 meters, Color: Red, Connector Type: Nickel-plated, Compatibility: Universal"
+    "Id": 9,
+    "Type": "Connector",
+    "Name": "Thunderbolt Cable",
+    "Count": 20,
+    "Price": 20,
+    "Information": "Type: Thunderbolt 3, Length: 0.8 meters, Color: Silver, Speed: 40 Gbps, Connector Type: Gold-plated"
   },
   {
-    "id": 7,
-  "type": "Connector",
-  "name": "SATA Cable",
-  "count": 9,
-  "price": 55,
-  "information": "Type: SATA III, Length: 0.5 meters, Color: Yellow, Speed: 6 Gbps, Connector Type: Locking Latch"
+    "Id": 10,
+    "Type": "Connector",
+    "Name": "Power Cable",
+    "Count": 7,
+    "Price": 80,
+    "Information": "Type: IEC C13, Length: 1.5 meters, Color: Black, Current Rating: 10A, Connector Type: Molded"
   },
   {
-  "id": 8,
-  "type": "Connector",
-  "name": "DVI Cable",
-  "count": 14,
-  "price": 30,
-  "information": "Type: DVI-D, Length: 1.8 meters, Color: White, Resolution: 1440p, Connector Type: Gold-plated"
+    "Id": 11,
+    "Type": "CPU",
+    "Name": "Intel Core i9-9900K",
+    "Count": 400,
+    "Price": 10,
+    "Information": "Socket: LGA1151, Cores: 8, Threads: 16, Base Clock: 3.6 GHz, Boost Clock: 5.0 GHz"
   },
   {
-  "id": 9,
-    "type": "Connector",
-    "name": "Thunderbolt Cable",
-    "count": 20,
-    "price": 20,
-    "information": "Type: Thunderbolt 3, Length: 0.8 meters, Color: Silver, Speed: 40 Gbps, Connector Type: Gold-plated"
-    },
-    {
-    "id": 10,
-    "type": "Connector",
-    "name": "Power Cable",
-    "count": 7,
-    "price": 80,
-    "information": "Type: IEC C13, Length: 1.5 meters, Color: Black, Current Rating: 10A, Connector Type: Molded"
-    },
-    {
-    "id": 11,
-    "type": "CPU",
-    "name": "Intel Core i9-9900K",
-    "count": 400,
-    "price": 10,
-    "information": "Socket: LGA1151, Cores: 8, Threads: 16, Base Clock: 3.6 GHz, Boost Clock: 5.0 GHz"
-    },
-    {
-    "id": 12,
-    "type": "CPU",
-    "name": "AMD Ryzen 7 3700X",
-    "count": 300,
-    "price": 15,
-    "information": "Socket: AM4, Cores: 8, Threads: 16, Base Clock: 3.6 GHz, Boost Clock: 4.4 GHz"
-    },
-    {
-    "id": 13,
-    "type": "CPU",
-    "name": "Intel Core i5-10600K",
-    "count": 250,
-    "price": 20,
-    "information": "Socket: LGA1200, Cores: 6, Threads: 12, Base Clock: 4.1 GHz, Boost Clock: 4.8 GHz"
-    },
-    {
-    "id": 14,
-    "type": "CPU",
-    "name": "AMD Ryzen 5 3600",
-    "count": 200,
-    "price": 25,
-    "information": "Socket: AM4, Cores: 6, Threads: 12, Base Clock: 3.6 GHz, Boost Clock: 4.2 GHz"
-    },
-      {
-    "id": 15,
-        "type": "CPU",
-        "name": "Intel Core i3-10100",
-        "count": 150,
-        "price": 30,
-        "information": "Socket: LGA1200, Cores: 4, Threads: 8, Base Clock: 3.6 GHz, Boost Clock: 4.3 GHz"
-        },
-        {
-    "id": 16,
-        "type": "CPU",
-        "name": "AMD Ryzen 3 3300X",
-        "count": 120,
-        "price": 35,
-        "information": "Socket: AM4, Cores: 4, Threads: 8, Base Clock: 3.8 GHz, Boost Clock: 4.3 GHz"
-        },
-        {
-    "id": 17,
-        "type": "CPU",
-        "name": "Intel Pentium G5400",
-        "count": 80,
-        "price": 40,
-        "information": "Socket: LGA1151, Cores: 2, Threads: 4, Base Clock: 3.7 GHz, Boost Clock: N/A"
-        },
-        {
-    "id": 18,
-        "type": "CPU",
-        "name": "AMD Athlon 3000G",
-        "count": 60,
-        "price": 45,
-        "information": "Socket: AM4, Cores: 2, Threads: 4, Base Clock: 3.5 GHz, Boost Clock: N/A"
-        },
-        {
-    "id": 19,
-        "type": "Frame",
-        "name": "Steel Frame",
-        "count": 50,
-        "price": 20,
-        "information": "Material: Steel, Color: Black, Size: ATX, Weight: 2 kg"
-        },
-        {
-    "id": 20,
-        "type": "Frame",
-        "name": "Aluminum Frame",
-        "count": 60,
-        "price": 15,
-        "information": "Material: Aluminum, Color: Silver, Size: Micro-ATX, Weight: 1.5 kg"
-        },
-        {
-    "id": 21,
-        "type": "Frame",
-        "name": "Carbon Fiber Frame",
-        "count": 80,
-        "price": 10,
-        "information": "Material: Carbon Fiber, Color: Carbon, Size: Mini-ITX, Weight: 1 kg"
-        },
-        {
-    "id": 22,
-          "type": "GPU",
-          "name": "NVIDIA GeForce RTX 3080",
-          "count": 800,
-          "price": 5,
-          "information": "VRAM: 10 GB GDDR6X, CUDA Cores: 8704, Boost Clock: 1710 MHz, Ray Tracing Cores: 68, Memory Bus: 320-bit"
-        },
-        {
-    "id": 23,
-          "type": "GPU",
-          "name": "AMD Radeon RX 6700 XT",
-          "count": 700,
-          "price": 8,
-          "information": "VRAM: 12 GB GDDR6, Stream Processors: 2560, Boost Clock: 2581 MHz, Ray Tracing Cores: N/A, Memory Bus: 192-bit"
-        },
-        {
-    "id": 24,
-          "type": "GPU",
-          "name": "NVIDIA GeForce GTX 1660 Super",
-          "count": 250,
-          "price": 15,
-          "information": "VRAM: 6 GB GDDR5, CUDA Cores: 1408, Boost Clock: 1785 MHz, Ray Tracing Cores: N/A, Memory Bus: 192-bit"
-        },
-        {
-    "id": 25,
-          "type": "GPU",
-          "name": "AMD Radeon RX 580",
-          "count": 180,
-          "price": 20,
-          "information": "VRAM: 8 GB GDDR5, Stream Processors: 2304, Boost Clock: 1340 MHz, Ray Tracing Cores: N/A, Memory Bus: 256-bit"
-        },
-        {
-    "id": 26,
-          "type": "GPU",
-          "name": "NVIDIA GeForce RTX 3060",
-          "count": 400,
-          "price": 10,
-          "information": "VRAM: 12 GB GDDR6, CUDA Cores: 3584, Boost Clock: 1777 MHz, Ray Tracing Cores: 28, Memory Bus: 192-bit"
-        },
-        {
-    "id": 27,
-          "type": "GPU",
-          "name": "AMD Radeon RX 5500 XT",
-          "count": 220,
-          "price": 25,
-          "information": "VRAM: 8 GB GDDR6, Stream Processors: 1408, Boost Clock: 1845 MHz, Ray Tracing Cores: N/A, Memory Bus: 128-bit"
-        },
-        {
-    "id": 28,
-          "type": "GPU",
-          "name": "NVIDIA GeForce GT 1030",
-          "count": 80,
-          "price": 30,
-          "information": "VRAM: 2 GB GDDR5, CUDA Cores: 384, Boost Clock: 1468 MHz, Ray Tracing Cores: N/A, Memory Bus: 64-bit"
-        },
-        {
-    "id": 29,
-          "type": "Motherboard",
-          "name": "Server Motherboard",
-          "count": 200,
-          "price": 8,
-          "information": "Socket: SP3, Chipset: X399, RAM Slots: 8, USB Ports: 10, PCIe Slots: 4"
-        },
-        {
-        "id": 30,
-        "type": "Motherboard",
-        "name": "ATX Motherboard",
-        "count": 130,
-        "price": 14,
-        "information": "Socket: LGA1200, Chipset: Z590, RAM Slots: 4, USB Ports: 8, PCIe Slots: 3"
-      },
-      {
-        "id": 31,
-        "type": "Motherboard",
-        "name": "Micro-ATX Motherboard",
-        "count": 110,
-        "price": 16,
-        "information": "Socket: AM4, Chipset: B550, RAM Slots: 3, USB Ports: 6, PCIe Slots: 2"
-      },
-      {
-        "id": 32,
-        "type": "Motherboard",
-        "name": "Workstation Motherboard",
-        "count": 180,
-        "price": 10,
-        "information": "Socket: LGA2066, Chipset: X299, RAM Slots: 8, USB Ports: 12, PCIe Slots: 4"
-      },
-      {
-        "id": 33,
-        "type": "Motherboard",
-        "name": "Budget Motherboard",
-        "count": 70,
-        "price": 25,
-        "information": "Socket: AM4, Chipset: A520, RAM Slots: 2, USB Ports: 4, PCIe Slots: 1"
-      },
-      {
-        "id": 34,
-        "type": "Motherboard",
-        "name": "High-End Motherboard",
-        "count": 250,
-        "price": 9,
-        "information": "Socket: LGA1200, Chipset: Z690, RAM Slots: 4, USB Ports: 10, PCIe Slots: 4"
-      },
-      {
-        "id": 35,
-        "type": "Memory",
-        "name": "Samsung 970 EVO Plus 500GB",
-        "count": 120,
-        "price": 25,
-        "information": "Type: NVMe SSD, Capacity: 500 GB, Read Speed: 3500 MB/s, Write Speed: 3200 MB/s, Form Factor: M.2"
-      },
-      {
-        "id": 36,
-        "type": "Memory",
-        "name": "Samsung 860 EVO 1TB",
-        "count": 130,
-        "price": 22,
-        "information": "Type: SATA SSD, Capacity: 1 TB, Read Speed: 550 MB/s, Write Speed: 520 MB/s, Form Factor: 2.5 inch"
-      },
-      {
-        "id": 37,
-        "type": "Memory",
-        "name": "Corsair MP510 1TB",
-        "count": 180,
-        "price": 15,
-        "information": "Type: NVMe SSD, Capacity: 1 TB, Read Speed: 3480 MB/s, Write Speed: 2000 MB/s, Form Factor: M.2"
-      },
-      {
-        "id": 38,
-        "type": "Memory",
-        "name": "Samsung 970 EVO Plus 500GB",
-        "count": 120,
-        "price": 25,
-        "information": "Type: NVMe SSD, Capacity: 500 GB, Read Speed: 3500 MB/s, Write Speed: 3200 MB/s, Form Factor: M.2"
-      },
-      {
-        "id": 39,
-        "type": "Memory",
-        "name": "Crucial MX500 1TB",
-        "count": 150,
-        "price": 20,
-        "information": "Type: SATA SSD, Capacity: 1 TB, Read Speed: 560 MB/s, Write Speed: 510 MB/s, Form Factor: 2.5 inch"
-      },
-      {
-        "id": 40,
-        "type": "Memory",
-        "name": "Western Digital Blue 2TB",
-        "count": 200,
-        "price": 15,
-        "information": "Type: HDD, Capacity: 2 TB, Speed: 5400 RPM, Cache: 256 MB, Form Factor: 3.5 inch"
-      },
-      {
-        "id": 41,
-        "type": "Memory",
-        "name": "Seagate BarraCuda 500GB",
-        "count": 80,
-        "price": 30,
-        "information": "Type: HDD, Capacity: 500 GB, Speed: 7200 RPM, Cache: 32 MB, Form Factor: 2.5 inch"
-      },
-      {
-        "id": 42,
-        "type": "Memory",
-        "name": "Kingston A2000 250GB",
-        "count": 70,
-        "price": 35,
-        "information": "Type: NVMe SSD, Capacity: 250 GB, Read Speed: 2000 MB/s, Write Speed: 1100 MB/s, Form Factor: M.2"
-      },
-      {
-        "id": 43,
-        "type": "Memory",
-        "name": "Toshiba X300 4TB",
-        "count": 250,
-        "price": 12,
-        "information": "Type: HDD, Capacity: 4 TB, Speed: 7200 RPM, Cache: 128 MB, Form Factor: 3.5 inch"
-      },
-      {
-        "id": 44,
-        "type": "Mouse",
-        "name": "Travel Mouse",
-        "count": 30,
-        "price": 40,
-        "information": "Type: Wired, DPI: 800, Buttons: 3, Color: Silver, Grip Type: Compact"
-      },
-      {
-        "id": 45,
-        "type": "Mouse",
-        "name": "Vertical Mouse",
-        "count": 45,
-        "price": 22,
-        "information": "Type: Wired, DPI: 1200, Buttons: 5, Color: Black, Grip Type: Vertical"
-      },
-      {
-        "id": 46,
-        "type": "Mouse",
-        "name": "Trackball Mouse",
-        "count": 70,
-        "price": 15,
-        "information": "Type: Wired, DPI: 1500, Buttons: 4, Color: Gray, Grip Type: Trackball"
-      },
-      {
-        "id": 47,
-        "type": "Mouse",
-        "name": "Silent Click Mouse",
-        "count": 25,
-        "price": 50,
-        "information": "Type: Wired, DPI: 1000, Buttons: 2, Color: White, Grip Type: Silent Click"
-      },
-      {
-        "id": 48,
-        "type": "Mouse",
-        "name": "Gaming Mousepad",
-        "count": 15,
-        "price": 60,
-        "information": "Type: Mousepad, Size: Large, Color: Black, Material: Cloth, Surface: Smooth"
-      },
-      {
-        "id": 49,
-        "type": "RAM",
-        "name": "Corsair Vengeance LPX 16GB",
-        "count": 80,
-        "price": 15,
-        "information": "Type: DDR4, Capacity: 16 GB (2 x 8 GB), Speed: 3200 MHz, CAS Latency: 16, Voltage: 1.35V"
-      },
-      {
-        "id": 50,
-        "type": "RAM",
-        "name": "G.Skill Ripjaws V 32GB",
-        "count": 120,
-        "price": 10,
-        "information": "Type: DDR4, Capacity: 32 GB (2 x 16 GB), Speed: 3600 MHz, CAS Latency: 18, Voltage: 1.35V"
-      },
-      {
-        "id": 51,
-        "type": "RAM",
-        "name": "Crucial Ballistix 8GB",
-        "count": 40,
-        "price": 20,
-        "information": "Type: DDR4, Capacity: 8 GB (1 x 8 GB), Speed: 2666 MHz, CAS Latency: 16, Voltage: 1.2V"
-      },
-      {
-        "id": 52,
-        "type": "RAM",
-        "name": "Kingston HyperX Fury 64GB",
-        "count": 200,
-        "price": 8,
-        "information": "Type: DDR4, Capacity: 64 GB (4 x 16 GB), Speed: 3200 MHz, CAS Latency: 18, Voltage: 1.35V"
-      },
-      {
-        "id": 53,
-        "type": "RAM",
-        "name": "Team T-Force Delta RGB 16GB",
-        "count": 100,
-        "price": 18,
-        "information": "Type: DDR4, Capacity: 16 GB (2 x 8 GB), Speed: 3000 MHz, CAS Latency: 16, Voltage: 1.35V"
-      },
-      {
-        "id": 54,
-        "type": "RAM",
-        "name": "Patriot Viper Steel 64GB",
-        "count": 220,
-        "price": 12,
-        "information": "Type: DDR4, Capacity: 64 GB (2 x 32 GB), Speed: 3200 MHz, CAS Latency: 22, Voltage: 1.35V"
-      },
-      {
-        "id": 55,
-        "type": "RAM",
-        "name": "Adata XPG Spectrix D60G 32GB",
-        "count": 150,
-        "price": 14,
-        "information": "Type: DDR4, Capacity: 32 GB (2 x 16 GB), Speed: 3200 MHz, CAS Latency: 16, Voltage: 1.35V"
-      },
-      {
-        "id": 56,
-        "type": "RAM",
-        "name": "Corsair Dominator Platinum RGB 128GB",
-        "count": 350,
-        "price": 6,
-        "information": "Type: DDR4, Capacity: 128 GB (8 x 16 GB), Speed: 3600 MHz, CAS Latency: 18, Voltage: 1.35V"
-      }
-    ]
-    
+    "Id": 12,
+    "Type": "CPU",
+    "Name": "AMD Ryzen 7 3700X",
+    "Count": 300,
+    "Price": 15,
+    "Information": "Socket: AM4, Cores: 8, Threads: 16, Base Clock: 3.6 GHz, Boost Clock: 4.4 GHz"
+  },
+  {
+    "Id": 13,
+    "Type": "CPU",
+    "Name": "Intel Core i5-10600K",
+    "Count": 250,
+    "Price": 20,
+    "Information": "Socket: LGA1200, Cores: 6, Threads: 12, Base Clock: 4.1 GHz, Boost Clock: 4.8 GHz"
+  },
+  {
+    "Id": 14,
+    "Type": "CPU",
+    "Name": "AMD Ryzen 5 3600",
+    "Count": 200,
+    "Price": 25,
+    "Information": "Socket: AM4, Cores: 6, Threads: 12, Base Clock: 3.6 GHz, Boost Clock: 4.2 GHz"
+  },
+  {
+    "Id": 15,
+    "Type": "CPU",
+    "Name": "Intel Core i3-10100",
+    "Count": 150,
+    "Price": 30,
+    "Information": "Socket: LGA1200, Cores: 4, Threads: 8, Base Clock: 3.6 GHz, Boost Clock: 4.3 GHz"
+  },
+  {
+    "Id": 16,
+    "Type": "CPU",
+    "Name": "AMD Ryzen 3 3300X",
+    "Count": 120,
+    "Price": 35,
+    "Information": "Socket: AM4, Cores: 4, Threads: 8, Base Clock: 3.8 GHz, Boost Clock: 4.3 GHz"
+  },
+  {
+    "Id": 17,
+    "Type": "CPU",
+    "Name": "Intel Pentium G5400",
+    "Count": 80,
+    "Price": 40,
+    "Information": "Socket: LGA1151, Cores: 2, Threads: 4, Base Clock: 3.7 GHz, Boost Clock: N/A"
+  },
+  {
+    "Id": 18,
+    "Type": "CPU",
+    "Name": "AMD Athlon 3000G",
+    "Count": 60,
+    "Price": 45,
+    "Information": "Socket: AM4, Cores: 2, Threads: 4, Base Clock: 3.5 GHz, Boost Clock: N/A"
+  },
+  {
+    "Id": 19,
+    "Type": "Frame",
+    "Name": "Steel Frame",
+    "Count": 50,
+    "Price": 20,
+    "Information": "Material: Steel, Color: Black, Size: ATX, Weight: 2 kg"
+  },
+  {
+    "Id": 20,
+    "Type": "Frame",
+    "Name": "Aluminum Frame",
+    "Count": 60,
+    "Price": 15,
+    "Information": "Material: Aluminum, Color: Silver, Size: Micro-ATX, Weight: 1.5 kg"
+  },
+  {
+    "Id": 21,
+    "Type": "Frame",
+    "Name": "Carbon Fiber Frame",
+    "Count": 80,
+    "Price": 10,
+    "Information": "Material: Carbon Fiber, Color: Carbon, Size: Mini-ITX, Weight: 1 kg"
+  },
+  {
+    "Id": 22,
+    "Type": "GPU",
+    "Name": "NVIDIA GeForce RTX 3080",
+    "Count": 800,
+    "Price": 5,
+    "Information": "VRAM: 10 GB GDDR6X, CUDA Cores: 8704, Boost Clock: 1710 MHz, Ray Tracing Cores: 68, Memory Bus: 320-bit"
+  },
+  {
+    "Id": 23,
+    "Type": "GPU",
+    "Name": "AMD Radeon RX 6700 XT",
+    "Count": 700,
+    "Price": 8,
+    "Information": "VRAM: 12 GB GDDR6, Stream Processors: 2560, Boost Clock: 2581 MHz, Ray Tracing Cores: N/A, Memory Bus: 192-bit"
+  },
+  {
+    "Id": 24,
+    "Type": "GPU",
+    "Name": "NVIDIA GeForce GTX 1660 Super",
+    "Count": 250,
+    "Price": 15,
+    "Information": "VRAM: 6 GB GDDR5, CUDA Cores: 1408, Boost Clock: 1785 MHz, Ray Tracing Cores: N/A, Memory Bus: 192-bit"
+  },
+  {
+    "Id": 25,
+    "Type": "GPU",
+    "Name": "AMD Radeon RX 580",
+    "Count": 180,
+    "Price": 20,
+    "Information": "VRAM: 8 GB GDDR5, Stream Processors: 2304, Boost Clock: 1340 MHz, Ray Tracing Cores: N/A, Memory Bus: 256-bit"
+  },
+  {
+    "Id": 26,
+    "Type": "GPU",
+    "Name": "NVIDIA GeForce RTX 3060",
+    "Count": 400,
+    "Price": 10,
+    "Information": "VRAM: 12 GB GDDR6, CUDA Cores: 3584, Boost Clock: 1777 MHz, Ray Tracing Cores: 28, Memory Bus: 192-bit"
+  },
+  {
+    "Id": 27,
+    "Type": "GPU",
+    "Name": "AMD Radeon RX 5500 XT",
+    "Count": 220,
+    "Price": 25,
+    "Information": "VRAM: 8 GB GDDR6, Stream Processors: 1408, Boost Clock: 1845 MHz, Ray Tracing Cores: N/A, Memory Bus: 128-bit"
+  },
+  {
+    "Id": 28,
+    "Type": "GPU",
+    "Name": "NVIDIA GeForce GT 1030",
+    "Count": 80,
+    "Price": 30,
+    "Information": "VRAM: 2 GB GDDR5, CUDA Cores: 384, Boost Clock: 1468 MHz, Ray Tracing Cores: N/A, Memory Bus: 64-bit"
+  },
+  {
+    "Id": 29,
+    "Type": "Motherboard",
+    "Name": "Server Motherboard",
+    "Count": 200,
+    "Price": 8,
+    "Information": "Socket: SP3, Chipset: X399, RAM Slots: 8, USB Ports: 10, PCIe Slots: 4"
+  },
+  {
+    "Id": 30,
+    "Type": "Motherboard",
+    "Name": "ATX Motherboard",
+    "Count": 130,
+    "Price": 14,
+    "Information": "Socket: LGA1200, Chipset: Z590, RAM Slots: 4, USB Ports: 8, PCIe Slots: 3"
+  },
+  {
+    "Id": 31,
+    "Type": "Motherboard",
+    "Name": "Micro-ATX Motherboard",
+    "Count": 110,
+    "Price": 16,
+    "Information": "Socket: AM4, Chipset: B550, RAM Slots: 3, USB Ports: 6, PCIe Slots: 2"
+  },
+  {
+    "Id": 32,
+    "Type": "Motherboard",
+    "Name": "Workstation Motherboard",
+    "Count": 180,
+    "Price": 10,
+    "Information": "Socket: LGA2066, Chipset: X299, RAM Slots: 8, USB Ports: 12, PCIe Slots: 4"
+  },
+  {
+    "Id": 33,
+    "Type": "Motherboard",
+    "Name": "Budget Motherboard",
+    "Count": 70,
+    "Price": 25,
+    "Information": "Socket: AM4, Chipset: A520, RAM Slots: 2, USB Ports: 4, PCIe Slots: 1"
+  },
+  {
+    "Id": 34,
+    "Type": "Motherboard",
+    "Name": "High-End Motherboard",
+    "Count": 250,
+    "Price": 9,
+    "Information": "Socket: LGA1200, Chipset: Z690, RAM Slots: 4, USB Ports: 10, PCIe Slots: 4"
+  },
+  {
+    "Id": 35,
+    "Type": "Memory",
+    "Name": "Samsung 970 EVO Plus 500GB",
+    "Count": 120,
+    "Price": 25,
+    "Information": "Type: NVMe SSD, Capacity: 500 GB, Read Speed: 3500 MB/s, Write Speed: 3200 MB/s, Form Factor: M.2"
+  },
+  {
+    "Id": 36,
+    "Type": "Memory",
+    "Name": "Samsung 860 EVO 1TB",
+    "Count": 130,
+    "Price": 22,
+    "Information": "Type: SATA SSD, Capacity: 1 TB, Read Speed: 550 MB/s, Write Speed: 520 MB/s, Form Factor: 2.5 inch"
+  },
+  {
+    "Id": 37,
+    "Type": "Memory",
+    "Name": "Corsair MP510 1TB",
+    "Count": 180,
+    "Price": 15,
+    "Information": "Type: NVMe SSD, Capacity: 1 TB, Read Speed: 3480 MB/s, Write Speed: 2000 MB/s, Form Factor: M.2"
+  },
+  {
+    "Id": 38,
+    "Type": "Memory",
+    "Name": "Samsung 970 EVO Plus 500GB",
+    "Count": 120,
+    "Price": 25,
+    "Information": "Type: NVMe SSD, Capacity: 500 GB, Read Speed: 3500 MB/s, Write Speed: 3200 MB/s, Form Factor: M.2"
+  },
+  {
+    "Id": 39,
+    "Type": "Memory",
+    "Name": "Crucial MX500 1TB",
+    "Count": 150,
+    "Price": 20,
+    "Information": "Type: SATA SSD, Capacity: 1 TB, Read Speed: 560 MB/s, Write Speed: 510 MB/s, Form Factor: 2.5 inch"
+  },
+  {
+    "Id": 40,
+    "Type": "Memory",
+    "Name": "Western Digital Blue 2TB",
+    "Count": 200,
+    "Price": 15,
+    "Information": "Type: HDD, Capacity: 2 TB, Speed: 5400 RPM, Cache: 256 MB, Form Factor: 3.5 inch"
+  },
+  {
+    "Id": 41,
+    "Type": "Memory",
+    "Name": "Seagate BarraCuda 500GB",
+    "Count": 80,
+    "Price": 30,
+    "Information": "Type: HDD, Capacity: 500 GB, Speed: 7200 RPM, Cache: 32 MB, Form Factor: 2.5 inch"
+  },
+  {
+    "Id": 42,
+    "Type": "Memory",
+    "Name": "Kingston A2000 250GB",
+    "Count": 70,
+    "Price": 35,
+    "Information": "Type: NVMe SSD, Capacity: 250 GB, Read Speed: 2000 MB/s, Write Speed: 1100 MB/s, Form Factor: M.2"
+  },
+  {
+    "Id": 43,
+    "Type": "Memory",
+    "Name": "Toshiba X300 4TB",
+    "Count": 250,
+    "Price": 12,
+    "Information": "Type: HDD, Capacity: 4 TB, Speed: 7200 RPM, Cache: 128 MB, Form Factor: 3.5 inch"
+  },
+  {
+    "Id": 44,
+    "Type": "Mouse",
+    "Name": "Travel Mouse",
+    "Count": 30,
+    "Price": 40,
+    "Information": "Type: Wired, DPI: 800, Buttons: 3, Color: Silver, Grip Type: Compact"
+  },
+  {
+    "Id": 45,
+    "Type": "Mouse",
+    "Name": "Vertical Mouse",
+    "Count": 45,
+    "Price": 22,
+    "Information": "Type: Wired, DPI: 1200, Buttons: 5, Color: Black, Grip Type: Vertical"
+  },
+  {
+    "Id": 46,
+    "Type": "Mouse",
+    "Name": "Trackball Mouse",
+    "Count": 70,
+    "Price": 15,
+    "Information": "Type: Wired, DPI: 1500, Buttons: 4, Color: Gray, Grip Type: Trackball"
+  },
+  {
+    "Id": 47,
+    "Type": "Mouse",
+    "Name": "Silent Click Mouse",
+    "Count": 25,
+    "Price": 50,
+    "Information": "Type: Wired, DPI: 1000, Buttons: 2, Color: White, Grip Type: Silent Click"
+  },
+  {
+    "Id": 48,
+    "Type": "Mouse",
+    "Name": "Gaming Mousepad",
+    "Count": 15,
+    "Price": 60,
+    "Information": "Type: Mousepad, Size: Large, Color: Black, Material: Cloth, Surface: Smooth"
+  },
+  {
+    "Id": 49,
+    "Type": "RAM",
+    "Name": "Corsair Vengeance LPX 16GB",
+    "Count": 80,
+    "Price": 15,
+    "Information": "Type: DDR4, Capacity: 16 GB (2 x 8 GB), Speed: 3200 MHz, CAS Latency: 16, Voltage: 1.35V"
+  },
+  {
+    "Id": 50,
+    "Type": "RAM",
+    "Name": "G.Skill Ripjaws V 32GB",
+    "Count": 120,
+    "Price": 10,
+    "Information": "Type: DDR4, Capacity: 32 GB (2 x 16 GB), Speed: 3600 MHz, CAS Latency: 18, Voltage: 1.35V"
+  },
+  {
+    "Id": 51,
+    "Type": "RAM",
+    "Name": "Crucial Ballistix 8GB",
+    "Count": 40,
+    "Price": 20,
+    "Information": "Type: DDR4, Capacity: 8 GB (1 x 8 GB), Speed: 2666 MHz, CAS Latency: 16, Voltage: 1.2V"
+  },
+  {
+    "Id": 52,
+    "Type": "RAM",
+    "Name": "Kingston HyperX Fury 64GB",
+    "Count": 200,
+    "Price": 8,
+    "Information": "Type: DDR4, Capacity: 64 GB (4 x 16 GB), Speed: 3200 MHz, CAS Latency: 18, Voltage: 1.35V"
+  },
+  {
+    "Id": 53,
+    "Type": "RAM",
+    "Name": "Team T-Force Delta RGB 16GB",
+    "Count": 100,
+    "Price": 18,
+    "Information": "Type: DDR4, Capacity: 16 GB (2 x 8 GB), Speed: 3000 MHz, CAS Latency: 16, Voltage: 1.35V"
+  },
+  {
+    "Id": 54,
+    "Type": "RAM",
+    "Name": "Patriot Viper Steel 64GB",
+    "Count": 220,
+    "Price": 12,
+    "Information": "Type: DDR4, Capacity: 64 GB (2 x 32 GB), Speed: 3200 MHz, CAS Latency: 22, Voltage: 1.35V"
+  },
+  {
+    "Id": 55,
+    "Type": "RAM",
+    "Name": "Adata XPG Spectrix D60G 32GB",
+    "Count": 150,
+    "Price": 14,
+    "Information": "Type: DDR4, Capacity: 32 GB (2 x 16 GB), Speed: 3200 MHz, CAS Latency: 16, Voltage: 1.35V"
+  },
+  {
+    "Id": 56,
+    "Type": "RAM",
+    "Name": "Corsair Dominator Platinum RGB 128GB",
+    "Count": 350,
+    "Price": 6,
+    "Information": "Type: DDR4, Capacity: 128 GB (8 x 16 GB), Speed: 3600 MHz, CAS Latency: 18, Voltage: 1.35V"
+  },
+  {
+    "Id": 57,
+    "Type": "cpu",
+    "Name": "test cpu",
+    "Count": 1,
+    "Price": 199,
+    "Information": "wiuehiwxelifuhr"
+  },
+  {
+    "Id": 58,
+    "Type": "testtype",
+    "Name": "testname",
+    "Count": 1,
+    "Price": 199,
+    "Information": "cool product"
+  },
+  {
+    "Id": 59,
+    "Type": "testeditedtype",
+    "Name": "testeditedname",
+    "Count": 1,
+    "Price": 19999,
+    "Information": "cool product"
+  },
+  {
+    "Id": 3,
+    "Type": "test",
+    "Name": "test",
+    "Count": 0,
+    "Price": 0,
+    "Information": ""
+  }
+]

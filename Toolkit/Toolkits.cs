@@ -2,6 +2,7 @@
 using App.Structs;
 
 
+
 namespace App.Toolkit
 {
     internal class Toolkits
@@ -17,6 +18,24 @@ namespace App.Toolkit
                 {
                     Console.Write("\n\t\t    >>>");
                     result = Convert.ToByte(Console.ReadLine());
+                }
+                catch
+                {
+                    fonts.RedText("T R Y   A G A I N");
+                }
+            }
+            return result;
+        }
+
+        public int CheckUserInputInt()
+        {
+            int result = 0;
+            while (result == 0)
+            {
+                try
+                {
+                    Console.Write("\n\t\t    >>>");
+                    result = Convert.ToInt32(Console.ReadLine());
                 }
                 catch
                 {

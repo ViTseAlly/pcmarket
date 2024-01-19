@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using System.Net;
-using App.Toolkit;
+﻿using App.Toolkit;
 using App.Structs;
 
 
@@ -15,6 +13,8 @@ namespace App.UI
         Toolkits toolkits = new Toolkits();
         ProductToolkits prtoolkits = new ProductToolkits();
         UserAccountToolkits uatoolkits = new UserAccountToolkits();
+        AdminUsersInterfaces AUInterfaces = new AdminUsersInterfaces();
+        AdminProductsInterfaces APInterfaces = new AdminProductsInterfaces();
         Fonts fonts = new Fonts();
 
 
@@ -68,7 +68,7 @@ namespace App.UI
                 }
                 else
                 {
-                    fonts.RedText("Invalid data. Try again.");
+                    fonts.RedText("Invalid data. Try again. ---------");
                     fonts.OrangeText("Press any key to try again...", true);
                 }
             }
@@ -88,8 +88,7 @@ namespace App.UI
 
                 tempUserData.SetAllUserData();
                 Console.Write("\n\t\t    Confirm password:");
-                confPassword = Console.ReadLine() ?? "";
-
+                confPassword = tempUserData.GenerateJwtToken(Console.ReadLine() ?? "", "uwinfywhiyhfzwu65f7wcgfni6rgixr6tfn8e7rznf76gfz76n");
 
                 if (uatoolkits.UserDataValidator(tempUserData) && tempUserData.Password.Equals(confPassword))
                 {
@@ -102,7 +101,7 @@ namespace App.UI
                     }
                     else
                     {
-                        fonts.RedText("C R E A T I N G   A C C O U N T   E R R O R. T R Y   A G A I N ");
+                        fonts.RedText("C R E A T I N G   A C C O U N T   E R R O R. T R Y   A G A I N");
                         fonts.OrangeText("Press any key to try again...", true);
                     }
                 }
@@ -114,7 +113,7 @@ namespace App.UI
             }
         }
 
-        public void EditUserAccount()
+        private void EditUserAccount()
         {
             UserStruct newUserData = new UserStruct();
             bool accountInformationUpdated = false;
@@ -164,7 +163,8 @@ namespace App.UI
 
             List<string> accountMenu = [
                                         "Edit account",
-                                        "Exit"
+                                        "Refuse the product",
+                                        "Exit into menu"
                                     ];
             toolkits.DisplayMenuList(accountMenu);
             byte input = toolkits.CheckUserInput();
@@ -175,6 +175,10 @@ namespace App.UI
                     EditUserAccount();
                     break;
                 case 2:
+                    DeleteProductFromList();
+                    CheckAccount();
+                    break;
+                case 3:
                     Menu();
                     break;
             }
@@ -199,7 +203,7 @@ namespace App.UI
 
             List<string> listPr = [
                                     "Pushare product",
-                                    "Exit"
+                                    "Exit into menu"
                                 ];
             toolkits.DisplayMenuList(listPr);
             userInput = toolkits.CheckUserInput();
@@ -217,16 +221,16 @@ namespace App.UI
             }    
         }
 
-        public void BuyProduct()
+        private void BuyProduct()
         {
             Console.Clear();
             Console.WriteLine("        ________  ________  ________  ________  ___  ___  ________ _________     \r\n       |\\   __  \\|\\   __  \\|\\   __  \\|\\   ___ \\|\\  \\|\\  \\|\\   ____\\\\___   ___\\   \r\n       \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\  \\_|\\ \\ \\  \\\\\\  \\ \\  \\___\\|___ \\  \\_|   \r\n        \\ \\   ____\\ \\   _  _\\ \\  \\\\\\  \\ \\  \\ \\\\ \\ \\  \\\\\\  \\ \\  \\       \\ \\  \\    \r\n         \\ \\  \\___|\\ \\  \\\\  \\\\ \\  \\\\\\  \\ \\  \\_\\\\ \\ \\  \\\\\\  \\ \\  \\____   \\ \\  \\   \r\n          \\ \\__\\    \\ \\__\\\\ _\\\\ \\_______\\ \\_______\\ \\_______\\ \\_______\\  \\ \\__\\  \r\n           \\|__|     \\|__|\\|__|\\|_______|\\|_______|\\|_______|\\|_______|   \\|__|  \r\n        ________  ___  ___  ________  ___  ___  ________  ________  _______      \r\n       |\\   __  \\|\\  \\|\\  \\|\\   ____\\|\\  \\|\\  \\|\\   __  \\|\\   __  \\|\\  ___ \\     \r\n       \\ \\  \\|\\  \\ \\  \\\\\\  \\ \\  \\___|\\ \\  \\\\\\  \\ \\  \\|\\  \\ \\  \\|\\  \\ \\   __/|    \r\n        \\ \\   ____\\ \\  \\\\\\  \\ \\_____  \\ \\   __  \\ \\   __  \\ \\   _  _\\ \\  \\_|/__  \r\n         \\ \\  \\___|\\ \\  \\\\\\  \\|____|\\  \\ \\  \\ \\  \\ \\  \\ \\  \\ \\  \\\\  \\\\ \\  \\_|\\ \\ \r\n          \\ \\__\\    \\ \\_______\\____\\_\\  \\ \\__\\ \\__\\ \\__\\ \\__\\ \\__\\\\ _\\\\ \\_______\\\r\n           \\|__|     \\|_______|\\_________\\|__|\\|__|\\|__|\\|__|\\|__|\\|__|\\|_______|\r\n                              \\|_________|                                       ");
             Console.Write("\n\t\t    Write product id:\n\t\t    >>>");
             if(int.TryParse(Console.ReadLine(), out int productId))
             {
-                ProductStruct pusharedProduct = prtoolkits.GetProductById(productId);
-                this.userData.PusharedProducts.Add(pusharedProduct.Name);
-                uatoolkits.InsertProductInFile(this.userData, pusharedProduct);
+                ProductStruct productData = prtoolkits.GetProductById(productId);
+                this.userData.PusharedProducts.Add($"Id: {productData.Id};Type: {productData.Type};Name: {productData.Name};Price: {productData.Price};Description: {productData.Information}");
+                uatoolkits.InsertProductInFile(this.userData, productData);
                 fonts.GreenText("P R O D U C T   W A S   P U S H A R E D");
                 fonts.GreenText("Press any key for leave...", true);
             }
@@ -235,6 +239,110 @@ namespace App.UI
                 fonts.RedText("N O T   F I N D   P R O D U C T");
                 fonts.OrangeText("Press any key to leave...", true);
                 Menu();
+            }
+        }
+
+        private void DeleteProductFromList()
+        {
+            Console.Clear();
+            Console.WriteLine("        ________   _______    ________  ___  ___   ________   ________   ___           \r\n       |\\   __  \\ |\\  ___ \\  |\\  _____\\|\\  \\|\\  \\ |\\   ____\\ |\\   __  \\ |\\  \\          \r\n       \\ \\  \\|\\  \\\\ \\   __/| \\ \\  \\__/ \\ \\  \\\\\\  \\\\ \\  \\___|_\\ \\  \\|\\  \\\\ \\  \\         \r\n        \\ \\   _  _\\\\ \\  \\_|/__\\ \\   __\\ \\ \\  \\\\\\  \\\\ \\_____  \\\\ \\   __  \\\\ \\  \\        \r\n         \\ \\  \\\\  \\|\\ \\  \\_|\\ \\\\ \\  \\_|  \\ \\  \\\\\\  \\\\|____|\\  \\\\ \\  \\ \\  \\\\ \\  \\____   \r\n          \\ \\__\\\\ _\\ \\ \\_______\\\\ \\__\\    \\ \\_______\\ ____\\_\\  \\\\ \\__\\ \\__\\\\ \\_______\\ \r\n           \\|__|\\|__| \\|_______| \\|__|     \\|_______||\\_________\\\\|__|\\|__| \\|_______| \r\n                                                     \\|_________|                      \r\n        ________   ___  ___   ________   ___  ___   ________   ________   _______      \r\n       |\\   __  \\ |\\  \\|\\  \\ |\\   ____\\ |\\  \\|\\  \\ |\\   __  \\ |\\   __  \\ |\\  ___ \\     \r\n       \\ \\  \\|\\  \\\\ \\  \\\\\\  \\\\ \\  \\___|_\\ \\  \\\\\\  \\\\ \\  \\|\\  \\\\ \\  \\|\\  \\\\ \\   __/|    \r\n        \\ \\   ____\\\\ \\  \\\\\\  \\\\ \\_____  \\\\ \\   __  \\\\ \\   __  \\\\ \\   _  _\\\\ \\  \\_|/__  \r\n         \\ \\  \\___| \\ \\  \\\\\\  \\\\|____|\\  \\\\ \\  \\ \\  \\\\ \\  \\ \\  \\\\ \\  \\\\  \\|\\ \\  \\_|\\ \\ \r\n          \\ \\__\\     \\ \\_______\\ ____\\_\\  \\\\ \\__\\ \\__\\\\ \\__\\ \\__\\\\ \\__\\\\ _\\ \\ \\_______\\\r\n           \\|__|      \\|_______||\\_________\\\\|__|\\|__| \\|__|\\|__| \\|__|\\|__| \\|_______|\r\n                                \\|_________|                                           ");
+            Console.WriteLine("\n\t\t    Your pushares:");
+            foreach(string prod in this.userData.PusharedProducts)
+            {
+                Console.WriteLine($"\t\t      -{prod}");
+            }
+            fonts.OrangeText("Enter the ID of the product you want to cancel:");
+            int userInput = toolkits.CheckUserInputInt();
+            if(uatoolkits.DeleteProductInFile(this.userData, userInput))
+            {
+                this.userData.PusharedProducts.RemoveAt(this.userData.PusharedProducts.FindIndex(p => p.Contains($"Id: {userInput};")));
+                fonts.GreenText("P R O D U C T   W A S   R E M O O V E D");
+                fonts.GreenText("Press any key to leave...", true);
+            }
+            else
+            {
+                fonts.RedText("P R O D U C T   N O T   F I N D");
+                fonts.OrangeText("Press any key to leave...", true);
+            }
+        }
+
+        public void AdminMenuUsers()
+        {
+            Console.Clear();
+            Console.WriteLine("        ________   ________   _____ ______    ___   ________      \r\n       |\\   __  \\ |\\   ___ \\ |\\   _ \\  _   \\ |\\  \\ |\\   ___  \\    \r\n       \\ \\  \\|\\  \\\\ \\  \\_|\\ \\\\ \\  \\\\\\__\\ \\  \\\\ \\  \\\\ \\  \\\\ \\  \\   \r\n        \\ \\   __  \\\\ \\  \\ \\\\ \\\\ \\  \\\\|__| \\  \\\\ \\  \\\\ \\  \\\\ \\  \\  \r\n         \\ \\  \\ \\  \\\\ \\  \\_\\\\ \\\\ \\  \\    \\ \\  \\\\ \\  \\\\ \\  \\\\ \\  \\ \r\n          \\ \\__\\ \\__\\\\ \\_______\\\\ \\__\\    \\ \\__\\\\ \\__\\\\ \\__\\\\ \\__\\\r\n           \\|__|\\|__| \\|_______| \\|__|     \\|__| \\|__| \\|__| \\|__|\r\n        _____ ______    _______    ________    ___  ___           \r\n       |\\   _ \\  _   \\ |\\  ___ \\  |\\   ___  \\ |\\  \\|\\  \\          \r\n       \\ \\  \\\\\\__\\ \\  \\\\ \\   __/| \\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\         \r\n        \\ \\  \\\\|__| \\  \\\\ \\  \\_|/__\\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\        \r\n         \\ \\  \\    \\ \\  \\\\ \\  \\_|\\ \\\\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\       \r\n          \\ \\__\\    \\ \\__\\\\ \\_______\\\\ \\__\\\\ \\__\\\\ \\_______\\      \r\n           \\|__|     \\|__| \\|_______| \\|__| \\|__| \\|_______|      ");
+            List<string> list = [
+                                    "Check all user accounts",
+                                    "Add user account",
+                                    "Edit user account",
+                                    "Delete user account",
+                                    "Exit to menu"
+                                ];
+            toolkits.DisplayMenuList(list);
+            byte userInput = toolkits.CheckUserInput();
+            switch(userInput)
+            {
+                case 1:
+                    AUInterfaces.GetAllUserAccounts();
+                    AdminMenuUsers();
+                    break;
+                case 2:
+                    AUInterfaces.CreateNewUserAccount();
+                    AdminMenuUsers();
+                    break;
+                case 3:
+                    AUInterfaces.EditUserAccount();
+                    AdminMenuUsers();
+                    break;
+                case 4:
+                    AUInterfaces.DeleteUserAccount();
+                    AdminMenuUsers();
+                    break;
+                case 5:
+                    Menu();
+                    break;
+                default:
+                    fonts.RedText("T R Y   A G A I N");
+                    break;
+            }
+        }
+
+        public void AdminMenuProducts()
+        {
+            Console.Clear();
+            Console.WriteLine("        ________   ________   _____ ______    ___   ________      \r\n       |\\   __  \\ |\\   ___ \\ |\\   _ \\  _   \\ |\\  \\ |\\   ___  \\    \r\n       \\ \\  \\|\\  \\\\ \\  \\_|\\ \\\\ \\  \\\\\\__\\ \\  \\\\ \\  \\\\ \\  \\\\ \\  \\   \r\n        \\ \\   __  \\\\ \\  \\ \\\\ \\\\ \\  \\\\|__| \\  \\\\ \\  \\\\ \\  \\\\ \\  \\  \r\n         \\ \\  \\ \\  \\\\ \\  \\_\\\\ \\\\ \\  \\    \\ \\  \\\\ \\  \\\\ \\  \\\\ \\  \\ \r\n          \\ \\__\\ \\__\\\\ \\_______\\\\ \\__\\    \\ \\__\\\\ \\__\\\\ \\__\\\\ \\__\\\r\n           \\|__|\\|__| \\|_______| \\|__|     \\|__| \\|__| \\|__| \\|__|\r\n        _____ ______    _______    ________    ___  ___           \r\n       |\\   _ \\  _   \\ |\\  ___ \\  |\\   ___  \\ |\\  \\|\\  \\          \r\n       \\ \\  \\\\\\__\\ \\  \\\\ \\   __/| \\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\         \r\n        \\ \\  \\\\|__| \\  \\\\ \\  \\_|/__\\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\        \r\n         \\ \\  \\    \\ \\  \\\\ \\  \\_|\\ \\\\ \\  \\\\ \\  \\\\ \\  \\\\\\  \\       \r\n          \\ \\__\\    \\ \\__\\\\ \\_______\\\\ \\__\\\\ \\__\\\\ \\_______\\      \r\n           \\|__|     \\|__| \\|_______| \\|__| \\|__| \\|_______|      ");
+            List<string> list = [
+                                    "Check all products",       // Created
+                                    "Add new product",          // Created
+                                    "Edit product",
+                                    "Delete product",
+                                    "Exit to menu"              // Created
+                                ];
+            toolkits.DisplayMenuList(list);
+            byte userInput = toolkits.CheckUserInput();
+            switch(userInput)
+            {
+                case 1:
+                    APInterfaces.CheckAllProducts();
+                    AdminMenuProducts();
+                    break;
+                case 2:
+                    APInterfaces.AddNewProduct();
+                    AdminMenuProducts();
+                    break;
+                case 3:
+                    APInterfaces.EditProduct();
+                    AdminMenuProducts();
+                    break;
+                case 4:
+                    APInterfaces.DeleteProduct();
+                    AdminMenuProducts();
+                    break;
+                case 5:
+                    Menu();
+                    break;
+                default:
+                    fonts.RedText("T R Y   A G A I N");
+                    break;
             }
         }
 
@@ -261,8 +369,8 @@ namespace App.UI
             Console.Clear();
             Console.Clear();
             Console.WriteLine("       _____ ______   _______   ________   ___  ___     \r\n      |\\   _ \\  _   \\|\\  ___ \\ |\\   ___  \\|\\  \\|\\  \\    \r\n      \\ \\  \\\\\\__\\ \\  \\ \\   __/|\\ \\  \\\\ \\  \\ \\  \\\\\\  \\   \r\n       \\ \\  \\\\|__| \\  \\ \\  \\_|/_\\ \\  \\\\ \\  \\ \\  \\\\\\  \\  \r\n        \\ \\  \\    \\ \\  \\ \\  \\_|\\ \\ \\  \\\\ \\  \\ \\  \\\\\\  \\ \r\n         \\ \\__\\    \\ \\__\\ \\_______\\ \\__\\\\ \\__\\ \\_______\\\r\n          \\|__|     \\|__|\\|_______|\\|__| \\|__|\\|_______|");
-            Console.WriteLine($"\n\t\t    C U R R E N T   U S E R: {this.userData.Name}");
-            Console.WriteLine($"\t\t    R O L E: {(this.userData.Role ? "Admin" : "Normal user")}");
+            fonts.GreenText($"\n\t\t    C U R R E N T   U S E R: {this.userData.Name}");
+            fonts.GreenText($"R O L E: {(this.userData.Role ? "Admin" : "Normal user")}");
             List<string> listNormalUser = [
                                     "Check account",
                                     "Find product",

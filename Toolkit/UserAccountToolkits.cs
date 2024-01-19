@@ -1,5 +1,7 @@
 using App.Structs;
 using Newtonsoft.Json;
+using App.Path;
+
 
 
 
@@ -11,11 +13,11 @@ namespace App.Toolkit
         private HashSet<char> badEmailCharacters = new HashSet<char> { ' ', '\n', ',', '!', '#', '\\', '/', '|', '!', '%', '^', '*', '?' };
         Toolkits toolkits = new Toolkits();
         Fonts fonts = new Fonts();
-        private string PATH_TO_USERS_FILE = "./Data/Users/users.json";
+        PathToFiles pathToFile = new PathToFiles();
 
         public bool CreateAccount(UserStruct newUser)
         {
-            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
             if(FindUserAccount(newUser)[0])
             {
                 return false;
@@ -24,14 +26,14 @@ namespace App.Toolkit
             userList.Add(newUser);
 
             string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
-            File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
+            File.WriteAllText(pathToFile.GetPathToUsers(), jsonContent);
 
             return true;
         }
 
         public bool DeleteAccount(UserStruct userData)
         {
-            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
 
             for (int i = 0; i < usersList.Count; i++)
             {
@@ -40,9 +42,9 @@ namespace App.Toolkit
                     string.Equals(usersList[i].Email, userData.Email, StringComparison.OrdinalIgnoreCase))
                 {
                     usersList.RemoveAt(i);
-                    File.Delete(this.PATH_TO_USERS_FILE);
+                    File.Delete(pathToFile.GetPathToUsers());
                     string jsonContent = JsonConvert.SerializeObject(usersList, Formatting.Indented);
-                    File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
+                    File.WriteAllText(pathToFile.GetPathToUsers(), jsonContent);
                     return true;
                 }
             }
@@ -64,51 +66,71 @@ namespace App.Toolkit
     
         public bool[] FindUserAccount(UserStruct userData)
         {
-            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
 
             foreach(UserStruct user in userList)
             {
-                if(user.Name.Equals(userData.Name, StringComparison.OrdinalIgnoreCase) &&
-               user.Surname.Equals(userData.Surname, StringComparison.OrdinalIgnoreCase) &&
-               user.Password.Equals(userData.Password) &&
-               user.Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase))
-               {
-                return new bool[] {true, user.Role};
-               }
+                if(userData.EqualsTwoUsers(user))
+                {
+                    return new bool[] {true, user.Role};
+                }
             }
             return new bool[] {false, false};
         }
     
         public List<string> GetPusharedProducts(UserStruct userData)
         {
-            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            List<UserStruct> usersList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
             foreach(UserStruct user in usersList)
             {
-                 if(user.Name.Equals(userData.Name, StringComparison.OrdinalIgnoreCase) &&
-               user.Surname.Equals(userData.Surname, StringComparison.OrdinalIgnoreCase) &&
-               user.Password.Equals(userData.Password) &&
-               user.Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase))
-               {
-                return user.PusharedProducts;
-               }
+                if(userData.EqualsTwoUsers(user))
+                {
+                    return user.PusharedProducts;
+                }
             }
             return new List<string>();
         }
             
         public bool InsertProductInFile(UserStruct userData, ProductStruct productData)
         {
-            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(this.PATH_TO_USERS_FILE);
+            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
 
-            UserStruct userToUpdate = userList.FirstOrDefault(u =>
-                string.Equals(u.Name, userData.Name, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(u.Surname, userData.Surname, StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(u.Email, userData.Email, StringComparison.OrdinalIgnoreCase));
-
-            userToUpdate.PusharedProducts.Add(productData.Name);
-            string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
-            File.WriteAllText(this.PATH_TO_USERS_FILE, jsonContent);
-            return true;
+            foreach(UserStruct user in userList)
+            {
+                if(userData.EqualsTwoUsers(user))
+                {
+                    user.PusharedProducts.Add($"Id: {productData.Id};Type: {productData.Type};Name: {productData.Name};Price: {productData.Price};Description: {productData.Information}");
+                    string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
+                    File.WriteAllText(pathToFile.GetPathToUsers(), jsonContent);
+                    return true;
+                }
+            }
+            return false;
         }
 
+        public bool DeleteProductInFile(UserStruct userData, int productId)
+        {
+            List<UserStruct> userList = toolkits.GetDataFromUsersJsonFile(pathToFile.GetPathToUsers());
+
+            foreach (UserStruct user in userList)
+            {
+                if (userData.EqualsTwoUsers(user))
+                {
+                    int index = user.PusharedProducts.FindIndex(p => p.Contains($"Id: {productId};"));
+
+                    if (index != -1)
+                    {
+                        user.PusharedProducts.RemoveAt(index);
+
+                        string jsonContent = JsonConvert.SerializeObject(userList, Formatting.Indented);
+                        File.WriteAllText(pathToFile.GetPathToUsers(), jsonContent);
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

@@ -1,17 +1,16 @@
-using App.Toolkit;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
+using System.Linq;
+using App.Path;
+using App.Toolkit;
+using Newtonsoft.Json;
 
 namespace App.Structs
 {
     public struct ProductStruct
     {
-        private string PATH_TO_PRODUCTS_FILE = "./Data/Components/products.json";
-        Toolkits toolkits;
-        ProductToolkits prtoolkits = new ProductToolkits();
-        Fonts fonts;
+        Toolkits toolkits = new Toolkits();
+        PathToFiles pathToFiles = new PathToFiles();
 
         public int Id { get; set; }
         public string Type { get; set; }
@@ -23,8 +22,6 @@ namespace App.Structs
         [JsonConstructor]
         public ProductStruct(int id, string type, string name, int count, int price, string information)
         {
-            toolkits = new Toolkits();
-            fonts = new Fonts();
             Id = id;
             Type = type;
             Name = name;
@@ -44,38 +41,23 @@ namespace App.Structs
             Console.WriteLine($"\t\t    Some information: {Information}");
         }
 
-        public void SetAllProductData()
+        public void SetAllProductData(List<ProductStruct> productsList)
         {
-            List<string> types = new List<string> { "Connector", "CPU", "Frame", "GPU", "Motherboard", "Memory", "Frame", "mouse", "RAM" };
-            List<ProductStruct> productsList = toolkits.GetDataFromProductsJsonFile(this.PATH_TO_PRODUCTS_FILE);
-            Id = productsList[productsList.Count].Id + 1;
+            Id = productsList[productsList.Count - 1].Id + 1;
 
-            Console.Write($"\n\t\t    Type:");
-            toolkits.DisplayMenuList(types);
-
-            byte userInput = 0;
-            while (userInput < 1 || userInput > 9)
-            {
-                userInput = toolkits.CheckUserInput();
-                if (userInput >= 1 && userInput <= 9)
-                {
-                    fonts.GreenText($"Type change: {types[userInput - 1]}");
-                    Type = types[userInput - 1];
-                }
-                else
-                {
-                    fonts.RedText("Try again!");
-                }
-            }
+            Console.Write("\n\t\t    Type:");
+            Type = Console.ReadLine() ?? "";
 
             Console.Write("\t\t    Name:");
             Name = Console.ReadLine() ?? "";
 
             Console.Write("\t\t    In stock:");
-            Count = int.Parse(Console.ReadLine() ?? "");
+            string countInput = Console.ReadLine() ?? "";
+            Count = int.TryParse(countInput, out int countResult) ? countResult : 0;
 
             Console.Write("\t\t    Price:");
-            Price = int.Parse(Console.ReadLine() ?? "");
+            string priceInput = Console.ReadLine() ?? "";
+            Price = int.TryParse(priceInput, out int priceResult) ? priceResult : 0;
 
             Console.Write("\t\t    Information:");
             Information = Console.ReadLine() ?? "";

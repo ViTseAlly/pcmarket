@@ -1,12 +1,17 @@
-﻿using System.Globalization;
-using System.Security.Cryptography.X509Certificates;
+﻿using App.Toolkit;
 using Newtonsoft.Json;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+
+
 
 
 namespace App.Structs
 {
     public struct UserStruct
     {
+        Fonts fonts = new Fonts();
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
@@ -47,18 +52,38 @@ namespace App.Structs
             }
         }
 
-
         public void SetAllUserData()
         {
             Console.Write("\n\t\t    Name:");
-            this.Name = Console.ReadLine() ?? "";
+            Name = Console.ReadLine() ?? "";
             Console.Write("\n\t\t    Surname:");
-            this.Surname = Console.ReadLine() ?? "";
+            Surname = Console.ReadLine() ?? "";
             Console.Write("\n\t\t    Email:");
-            this.Email = Console.ReadLine() ?? "";
+            Email = Console.ReadLine() ?? "";
             Console.Write("\n\t\t    Password:");
-            this.Password = Console.ReadLine() ?? "";
+            Password = GenerateJwtToken(Console.ReadLine() ?? "", "uwinfywhiyhfzwu65f7wcgfni6rgixr6tfn8e7rznf76gfz76n");
         }
 
+        public string GenerateJwtToken(string data, string TOKEN)
+        {
+            var securityKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(TOKEN));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                claims: new[] { new Claim("data", data) },
+                signingCredentials: credentials
+            );
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(token);
+        }
+
+        public bool EqualsTwoUsers(UserStruct userData)
+        {
+            return Name.Equals(userData.Name, StringComparison.OrdinalIgnoreCase) &&
+               Surname.Equals(userData.Surname, StringComparison.OrdinalIgnoreCase) &&
+               Password.Equals(userData.Password) &&
+               Email.Equals(userData.Email, StringComparison.OrdinalIgnoreCase);
+        }
     }
 }

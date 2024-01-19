@@ -8,40 +8,39 @@ namespace Project
 {
     class Program
     {
-        private static Toolkits toolkits = new Toolkits();                                       //    Створення допоміжного о'бєкту у якому містяться основні функції проекту
-        private static Interfaces interfaces = new Interfaces();                                 //    Створення об'єкту що відповідальний за відображенння "сторінок" у консолі
+        private static Toolkits toolkits = new Toolkits();                                     
+        private static Interfaces interfaces = new Interfaces();                                
         private static UserStruct user = new UserStruct();
 
         public static void Main(string[] args)
-        {                                                                             // Оголошення власних об'єктів:
+        {                                                                    
             bool programStart = true;
             bool isUserLogged = false;
 
-            interfaces.Start();                                                       // Початок роботи програми: Запуск основного меню
-
-            while (!isUserLogged && programStart)                                     // Цикл який буде діяти поки користувач не увійде у акаунт або не вийде з програми
+            interfaces.Start();                                                 
+            while (!isUserLogged && programStart)                                  
             {
                 byte userInput = toolkits.CheckUserInput();
                 switch (userInput)
                 {
                     case 1:
-                        user = interfaces.Login();                               // Визов вікна входу у акаунт
-                        isUserLogged = true;                                          // Зміна прапору на true (перевірка у циклі)
+                        user = interfaces.Login();                            
+                        isUserLogged = true;                                  
                         break;
                     case 2:
-                        interfaces.CreateAccount();                                   // Вікно створення акаунту
-                        interfaces.Start();                                           // Після успішного створення користувача поверне на головний екран
+                        interfaces.CreateAccount();                                 
+                        interfaces.Start();                                         
                         break;
                     case 3:
-                        programStart = false;                                         // Зміна прапору на false (перевірка у циклі)
-                        interfaces.Exit();                                            // Завершення програми виводом вікна виходу
+                        programStart = false;                                        
+                        interfaces.Exit();                                           
                         break;
                 }
             }
 
-            while (isUserLogged && programStart)                                      // Цикл для запуску основного функціоналу програми після того як користувач увійде у акаунт
+            while (isUserLogged && programStart)                                     
             {
-                interfaces.Menu();                                            // Запуск вікна головного меню
+                interfaces.Menu();                                            
                 byte userInput = toolkits.CheckUserInput();
                 if(user.Role)
                 {
@@ -57,6 +56,12 @@ namespace Project
                         case 3:
                             interfaces.About();
                             interfaces.Menu();
+                            break;
+                        case 4:
+                            interfaces.AdminMenuProducts();
+                            break;
+                        case 5:
+                            interfaces.AdminMenuUsers();
                             break;
                         case 6:
                             programStart = false;
